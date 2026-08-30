@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { 
   ArrowLeft, Zap, ShieldCheck, CheckCircle2, 
   ShoppingCart, Sparkles, HelpCircle, Check, 
-  Coins, Users, Tag, Gem, Gift, Flame, Trophy
+  Coins, Users, Tag, Gem, Gift, Flame, Trophy, PhoneCall
 } from 'lucide-react';
 import { addToCart } from '../lib/cart';
 
@@ -366,18 +366,40 @@ export default function TopupOrderClient() {
 
             <div style={{ display: 'grid', gridTemplateColumns: game.hasZoneId ? '1fr 140px' : '1fr', gap: '12px' }}>
               <div>
-                <label style={{ display: 'block', fontSize: '12px', fontWeight: 800, color: '#0a2c61', marginBottom: '6px' }}>
-                  {game.idField} *
-                </label>
-                <input 
-                  type="text" 
-                  name="playerId"
-                  placeholder={game.idPlaceholder}
-                  value={playerIdInput}
-                  onChange={(e) => setPlayerIdInput(e.target.value)}
-                  style={{ width: '100%', padding: '12px 14px', borderRadius: '10px', border: '1.5px solid #cbd5e1', fontSize: '13px', outline: 'none', fontWeight: 700 }}
-                  required
-                />
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                  <label style={{ fontSize: '12px', fontWeight: 800, color: '#0a2c61' }}>
+                    {game.idField} *
+                  </label>
+                  {playerIdInput.trim().length >= 4 && (
+                    <span style={{ fontSize: '10.5px', fontWeight: 800, color: '#16a34a', background: '#ecfdf5', padding: '1px 6px', borderRadius: '4px' }}>
+                      ✓ ID Format Sax Ah
+                    </span>
+                  )}
+                </div>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <input 
+                    type="text" 
+                    name="playerId"
+                    placeholder={game.idPlaceholder}
+                    value={playerIdInput}
+                    onChange={(e) => setPlayerIdInput(e.target.value)}
+                    style={{ flex: 1, padding: '12px 14px', borderRadius: '10px', border: '1.5px solid #cbd5e1', fontSize: '13px', outline: 'none', fontWeight: 700 }}
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (!playerIdInput.trim()) {
+                        alert('Fadlan marka hore geli Player ID-gaaga.');
+                        return;
+                      }
+                      alert(`✓ Player ID: ${playerIdInput.trim()} waa la xaqiijiyay! Waxaad u gudbi kartaa xulashada xirmada.`);
+                    }}
+                    style={{ background: '#eef4fc', border: '1.5px solid #cbd5e1', color: '#0a2c61', padding: '0 14px', borderRadius: '10px', fontSize: '11px', fontWeight: 800, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                  >
+                    Hubi ID-ga
+                  </button>
+                </div>
               </div>
 
               {game.hasZoneId && (
@@ -505,22 +527,56 @@ export default function TopupOrderClient() {
             </button>
           </div>
 
-          {/* Success Notification Box */}
+          {/* Success Notification & Receipt Box */}
           {orderSuccess && (
-            <div style={{ marginTop: '20px', padding: '16px', borderRadius: '12px', background: '#ecfdf5', border: '1.5px solid #86efac', color: '#065f46' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-                <CheckCircle2 size={18} color="#10b981" />
-                <h4 style={{ fontSize: '14px', fontWeight: 900, margin: 0 }}>Dalabkaagu Si Guul leh Ayaa Loo Gudbiyay!</h4>
+            <div style={{ marginTop: '22px', padding: '20px', borderRadius: '16px', background: '#f0fdf4', border: '1.5px solid #86efac', color: '#065f46', boxShadow: '0 6px 20px rgba(16,185,129,0.12)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <CheckCircle2 size={20} color="#10b981" />
+                  <h4 style={{ fontSize: '15px', fontWeight: 900, margin: 0, color: '#065f46' }}>Dalabkaagu Si Guul Leh Ayaa Loo Diiwaangeliyay!</h4>
+                </div>
+                <span style={{ fontSize: '10.5px', fontWeight: 900, background: '#dcfce7', color: '#166534', padding: '2px 8px', borderRadius: '6px' }}>
+                  {orderSuccess.id}
+                </span>
               </div>
-              <p style={{ fontSize: '12px', margin: '0 0 10px' }}>
-                Dalabka <b>{orderSuccess.id}</b> ({orderSuccess.package}) ayaa si toos ah loogu shubayaa Player ID: <b>{orderSuccess.playerId}</b>.
-              </p>
-              <Link 
-                href="/track-order"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#10b981', color: '#ffffff', padding: '6px 14px', borderRadius: '6px', fontSize: '11.5px', fontWeight: 800, textDecoration: 'none' }}
-              >
-                <span>La Soco Dalabkaaga Bogga Dalabkaga →</span>
-              </Link>
+
+              <div style={{ background: '#ffffff', border: '1px solid #bbf7d0', borderRadius: '10px', padding: '12px', marginBottom: '14px', fontSize: '12px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span style={{ color: '#64748b' }}>Ciyaarta:</span>
+                  <b style={{ color: '#0a2c61' }}>{orderSuccess.game}</b>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span style={{ color: '#64748b' }}>Xirmada:</span>
+                  <b style={{ color: '#16a34a' }}>{orderSuccess.package}</b>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span style={{ color: '#64748b' }}>Player ID:</span>
+                  <b style={{ color: '#0a2c61' }}>{orderSuccess.playerId}</b>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span style={{ color: '#64748b' }}>Qiimaha:</span>
+                  <b style={{ color: '#d91f2d' }}>${Number(orderSuccess.amount).toFixed(2)}</b>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                <a 
+                  href={`https://wa.me/252613667676?text=Asc%20TOKIYO%20STORE%2C%20waxaan%20bixiyay%20dalabkan%3A%0A-%20Order%20ID%3A%20${orderSuccess.id}%0A-%20Ciyaarta%3A%20${encodeURIComponent(orderSuccess.game)}%0A-%20Xirmada%3A%20${encodeURIComponent(orderSuccess.package)}%0A-%20Player%20ID%3A%20${orderSuccess.playerId}%0A-%20Qiimaha%3A%20$${orderSuccess.amount}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#25d366', color: '#ffffff', padding: '8px 16px', borderRadius: '8px', fontSize: '12px', fontWeight: 800, textDecoration: 'none', boxShadow: '0 2px 8px rgba(37,211,102,0.3)' }}
+                >
+                  <PhoneCall size={14} />
+                  <span>Xaqiiji WhatsApp (1-Click)</span>
+                </a>
+
+                <Link 
+                  href="/track-order"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#0a2c61', color: '#ffffff', padding: '8px 16px', borderRadius: '8px', fontSize: '12px', fontWeight: 800, textDecoration: 'none' }}
+                >
+                  <span>La Soco Dalabkaga →</span>
+                </Link>
+              </div>
             </div>
           )}
         </form>

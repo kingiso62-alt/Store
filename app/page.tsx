@@ -167,67 +167,57 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Dynamic Floating Animated Gaming & Accessories Showcase */}
+          {/* Dynamic Floating Animated Pure Digital Gaming Showcase */}
           <div className="topupHeroShowcase">
             <div className="floatingGameStack">
-              {/* Pro Accessories & Hardware */}
-              <div className="floatCard cardMouse" title="Optical Gaming Mouse">
-                <img src="/images/products/logitech-g502.png" alt="Pro Gaming Mouse" />
-                <span className="cardLabel">Pro Mouse</span>
+              {/* Digital Gaming Passes & Currencies */}
+              <div className="floatCard card1" title="PUBG Mobile UC">
+                <img src="/images/games/pubg-uc-chest.jpg" alt="PUBG UC Chest" />
+                <span className="cardLabel">PUBG UC</span>
               </div>
-              <div className="floatCard cardKeyboard" title="RGB Mechanical Keyboard">
-                <img src="/images/products/redragon-k552.png" alt="Mechanical Keyboard" />
-                <span className="cardLabel">RGB Keyboard</span>
+              <div className="floatCard card2" title="Free Fire Diamonds">
+                <img src="/images/games/free-fire.png" alt="Free Fire Diamonds" />
+                <span className="cardLabel">Diamonds</span>
               </div>
-              <div className="floatCard cardHeadset" title="Esports Pro Headset">
-                <img src="/images/products/hyperx-cloud2.png" alt="Esports Headset" />
-                <span className="cardLabel">Pro Headset</span>
+              <div className="floatCard card3" title="eFootball Android">
+                <img src="/images/games/efootball-android.png" alt="eFootball Coins" />
+                <span className="cardLabel">eFootball</span>
               </div>
-              <div className="floatCard cardController" title="Wireless Controller">
-                <img src="/images/products/ps5-dualsense.png" alt="PS5 Controller" />
-                <span className="cardLabel">Controller</span>
+              <div className="floatCard card4" title="eFootball iOS">
+                <img src="/images/games/efootball-ios.png" alt="eFootball iOS" />
+                <span className="cardLabel">eFootball iOS</span>
               </div>
-              <div className="floatCard cardChair" title="Ergonomic Chair">
-                <img src="/images/categories/chair.png" alt="Gaming Chair" />
-                <span className="cardLabel">Gaming Chair</span>
+              <div className="floatCard card5" title="PUBG Royale Pass">
+                <img src="/images/games/pubg-royale-pass.jpg" alt="Royale Pass" />
+                <span className="cardLabel">Royale Pass</span>
               </div>
-              <div className="floatCard cardMonitor" title="Curved Gaming Monitor">
-                <img src="/images/categories/monitor.png" alt="Curved Monitor" />
-                <span className="cardLabel">Curved Monitor</span>
+              <div className="floatCard card6" title="Official Supercars">
+                <img src="/images/games/pubg-cars-official.png" alt="Ferrari Supercars" />
+                <span className="cardLabel">Supercars</span>
               </div>
-              <div className="floatCard cardMic" title="Studio Microphone">
-                <img src="/images/categories/microphone.png" alt="Studio Mic" />
-                <span className="cardLabel">Studio Mic</span>
+              <div className="floatCard card7" title="Mythic 7-Star X-Suits">
+                <img src="/images/games/pubg-xsuits-official.png" alt="X-Suits" />
+                <span className="cardLabel">X-Suits</span>
               </div>
-              <div className="floatCard cardDeskMat" title="RGB Desk Mat">
-                <img src="/images/categories/mousepad.png" alt="Desk Mat" />
-                <span className="cardLabel">RGB Desk Mat</span>
+              <div className="floatCard card8" title="Popularity Battle">
+                <img src="/images/games/pubg-popularity-official.png" alt="Popularity" />
+                <span className="cardLabel">Popularity</span>
               </div>
-
-              {/* Popular Games & Specials */}
-              <div className="floatCard card1" title="PUBG Mobile">
-                <img src="/images/games/pubg-mobile.png" alt="PUBG Mobile" />
-                <span className="cardLabel">PUBG Mobile</span>
+              <div className="floatCard card9" title="Roblox Robux">
+                <img src="/images/games/roblox.png" alt="Roblox" />
+                <span className="cardLabel">Roblox</span>
               </div>
-              <div className="floatCard card2" title="Free Fire">
-                <img src="/images/games/free-fire.png" alt="Free Fire" />
-                <span className="cardLabel">Free Fire</span>
+              <div className="floatCard card10" title="Blood Strike Mena">
+                <img src="/images/games/blood-strike.png" alt="Blood Strike" />
+                <span className="cardLabel">Blood Strike</span>
               </div>
-              <div className="floatCard card3" title="Mobile Legends">
+              <div className="floatCard card11" title="Mobile Legends Diamonds">
                 <img src="/images/games/mobile-legends.png" alt="Mobile Legends" />
                 <span className="cardLabel">MLBB</span>
               </div>
-              <div className="floatCard card4" title="eFootball">
-                <img src="/images/games/efootball.png" alt="eFootball" />
-                <span className="cardLabel">eFootball</span>
-              </div>
-              <div className="floatCard card6" title="Official Supercars">
-                <img src="/images/games/pubg-cars-official.png" alt="Cars" />
-                <span className="cardLabel">Cars</span>
-              </div>
-              <div className="floatCard card7" title="X-Suits">
-                <img src="/images/games/pubg-xsuits-official.png" alt="X-Suits" />
-                <span className="cardLabel">X-Suits</span>
+              <div className="floatCard card12" title="COD Mobile Points">
+                <img src="/images/games/cod-mobile.png" alt="COD Points" />
+                <span className="cardLabel">COD Points</span>
               </div>
             </div>
           </div>
