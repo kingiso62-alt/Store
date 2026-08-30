@@ -1,9 +1,12 @@
 import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import FlashSaleBanner from '../components/features/FlashSaleBanner';
+import CustomerReviewsSection from '../components/features/CustomerReviewsSection';
+import VipLoyaltySection from '../components/features/VipLoyaltySection';
 import { 
   Zap, ShieldCheck, Sparkles, ArrowRight, 
-  PhoneCall, CreditCard
+  PhoneCall, CreditCard, Trophy
 } from 'lucide-react';
 
 // 12 Games strictly ordered as requested by user
@@ -247,12 +250,15 @@ export default function Home() {
           ))}
         </section>
 
-        {/* 4. TRUST & SECURITY STEPS */}
+        {/* 4. FLASH SALE & 24-HOUR DEALS BANNER */}
+        <FlashSaleBanner />
+
+        {/* 5. TRUST & SECURITY STEPS */}
         <section className="esportsStepsSection">
           <div className="stepCard">
             <div className="stepNumber">01</div>
             <div className="stepContent">
-              <h4>Choose Game & Package</h4>
+              <h4>Choose Game &amp; Package</h4>
               <p>Select your favorite game title and required currency pack.</p>
             </div>
           </div>
@@ -274,7 +280,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 4. PURE GAMING TOP-UP GUARANTEES */}
+        {/* 6. VIP LOYALTY CLUB SECTION */}
+        <VipLoyaltySection />
+
+        {/* 7. CUSTOMER REVIEWS & TESTIMONIALS */}
+        <CustomerReviewsSection />
+
+        {/* 8. PURE GAMING TOP-UP GUARANTEES */}
         <section className="luxuryBenefitsStrip wrap">
           <div className="benefitCard">
             <div className="benefitIconWrap benefitIconDelivery">

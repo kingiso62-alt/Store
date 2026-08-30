@@ -6,15 +6,17 @@ import {
   UserRound, Zap, Bell, Sparkles, 
   Truck, Download, Menu, X, Home, ShoppingBag, 
   KeyRound, Wallet, Award, Info, 
-  HelpCircle, PhoneCall, Heart, ShoppingCart
+  HelpCircle, PhoneCall, Heart, ShoppingCart, Search, Trophy
 } from 'lucide-react';
 import { supabaseBrowser } from '../lib/supabase-browser';
+import QuickSearchModal from './features/QuickSearchModal';
 
 export default function Header() {
   const pathname = usePathname();
   const [unreadNotifications, setUnreadNotifications] = useState(0);
   const [cartCount, setCartCount] = useState(2);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
 
   useEffect(() => {
@@ -126,6 +128,10 @@ export default function Header() {
               <Award size={15} className="navItemIcon" />
               <span>Leaderboard</span>
             </Link>
+            <Link href="/tournaments" className={`unifiedNavLink ${pathname === '/tournaments' ? 'active' : ''}`}>
+              <Trophy size={15} className="navItemIcon" />
+              <span>Tournaments</span>
+            </Link>
             <Link href="/terms" className={`unifiedNavLink ${pathname === '/terms' ? 'active' : ''}`}>
               <Info size={15} className="navItemIcon" />
               <span>Shuruudaha</span>
@@ -138,6 +144,19 @@ export default function Header() {
 
           {/* Action Icons (Desktop & Mobile) */}
           <div className="unifiedActionGroup">
+            {/* Quick Search Button (Desktop & Mobile) */}
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              className="unifiedHeaderIconBtn"
+              aria-label="Search games"
+              title="Search (Ctrl + K)"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', cursor: 'pointer', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '8px', padding: '6px 12px', color: '#ffffff', fontSize: '11px', fontWeight: 800 }}
+            >
+              <Search size={15} color="#93c5fd" />
+              <span className="hideOnMobile">Search (Ctrl+K)</span>
+            </button>
+
             {/* Desktop Action Icons */}
             <div className="desktopActionIcons">
               <Link href="/track-order" className="unifiedHeaderIconBtn" aria-label="Orders" title="Orders">
@@ -172,7 +191,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* 3. CLEAN & ELEGANT MOBILE DRAWER (EXACT 7 ITEMS AS IN USER SCREENSHOT) */}
+      {/* 3. CLEAN & ELEGANT MOBILE DRAWER */}
       {mobileNavOpen && (
         <>
           <div 
@@ -193,7 +212,7 @@ export default function Header() {
               </button>
             </div>
 
-            {/* Exact 7 Navigation Items as requested */}
+            {/* Exact Navigation Items */}
             <div className="cleanDrawerMenuList">
               {/* 1. Home */}
               <Link 
@@ -245,7 +264,17 @@ export default function Header() {
                 <span className="cleanDrawerLabel">Leaderboard</span>
               </Link>
 
-              {/* 6. Shuruudaha */}
+              {/* 6. Tournaments */}
+              <Link 
+                href="/tournaments" 
+                className={`cleanDrawerItem ${pathname === '/tournaments' ? 'active' : ''}`} 
+                onClick={() => setMobileNavOpen(false)}
+              >
+                <Trophy size={19} className="cleanDrawerIcon" />
+                <span className="cleanDrawerLabel">Tournaments (Tartamada)</span>
+              </Link>
+
+              {/* 7. Shuruudaha */}
               <Link 
                 href="/terms" 
                 className={`cleanDrawerItem ${pathname === '/terms' ? 'active' : ''}`} 
@@ -255,7 +284,7 @@ export default function Header() {
                 <span className="cleanDrawerLabel">Shuruudaha</span>
               </Link>
 
-              {/* 7. FAQ */}
+              {/* 8. FAQ */}
               <Link 
                 href="/faq" 
                 className={`cleanDrawerItem ${pathname === '/faq' ? 'active' : ''}`} 
@@ -281,6 +310,9 @@ export default function Header() {
           </div>
         </>
       )}
+
+      {/* Quick Search Modal Component */}
+      <QuickSearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 }
