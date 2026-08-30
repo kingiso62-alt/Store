@@ -1,0 +1,2 @@
+import {NextResponse} from 'next/server';import {requirePermission} from '../../../../lib/server/require-permission';import {supabaseAdmin} from '../../../../lib/server/supabase-admin';
+export async function GET(req:Request){const g=await requirePermission(req,'manage_orders');if(g.error)return g.error;const {data,error}=await supabaseAdmin().from('fraud_flags').select('*,profiles(full_name,phone)').order('created_at',{ascending:false}).limit(500);return error?NextResponse.json({error:error.message},{status:500}):NextResponse.json({flags:data||[]})}

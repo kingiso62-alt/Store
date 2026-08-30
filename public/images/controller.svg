@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ctrlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a2c61"/>
+      <stop offset="60%" stop-color="#14376b"/>
+      <stop offset="100%" stop-color="#b51f2d"/>
+    </linearGradient>
+    <linearGradient id="ctrlBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+  </defs>
+  <circle cx="150" cy="150" r="130" fill="#f4f7fc"/>
+  <!-- Controller Body -->
+  <path d="M 85 95 C 115 95 130 110 150 110 C 170 110 185 95 215 95 C 255 95 270 155 255 210 C 248 235 220 240 195 215 C 175 195 165 190 150 190 C 135 190 125 195 105 215 C 80 240 52 235 45 210 C 30 155 45 95 85 95 Z" fill="url(#ctrlBody)" stroke="#0a2c61" stroke-width="4"/>
+  <!-- Touchpad/Center -->
+  <rect x="120" y="112" width="60" height="38" rx="6" fill="#0a2c61"/>
+  <!-- D-Pad -->
+  <path d="M 85 135 L 95 135 L 95 125 L 105 125 L 105 135 L 115 135 L 115 145 L 105 145 L 105 155 L 95 155 L 95 145 L 85 145 Z" fill="#0a2c61"/>
+  <!-- Action Buttons -->
+  <circle cx="200" cy="125" r="5" fill="#b51f2d"/>
+  <circle cx="190" cy="140" r="5" fill="#0a2c61"/>
+  <circle cx="210" cy="140" r="5" fill="#0a2c61"/>
+  <circle cx="200" cy="155" r="5" fill="#0a2c61"/>
+  <!-- Analog Sticks -->
+  <circle cx="115" cy="175" r="16" fill="#0a2148" stroke="#b51f2d" stroke-width="3"/>
+  <circle cx="185" cy="175" r="16" fill="#0a2148" stroke="#b51f2d" stroke-width="3"/>
+  <circle cx="115" cy="175" r="7" fill="#2d4a75"/>
+  <circle cx="185" cy="175" r="7" fill="#2d4a75"/>
+</svg>

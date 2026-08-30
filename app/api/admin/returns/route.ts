@@ -1,0 +1,2 @@
+import {NextResponse} from 'next/server';import {requirePermission} from '../../../../lib/server/require-permission';import {supabaseAdmin} from '../../../../lib/server/supabase-admin';
+export async function GET(req:Request){const g=await requirePermission(req,'manage_orders');if(g.error)return g.error;const {data,error}=await supabaseAdmin().from('return_requests').select('*,orders(order_number,total),profiles(full_name,phone)').order('created_at',{ascending:false});return error?NextResponse.json({error:error.message},{status:500}):NextResponse.json({returns:data||[]})}

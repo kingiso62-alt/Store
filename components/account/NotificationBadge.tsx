@@ -1,0 +1,3 @@
+'use client';
+import {useEffect,useState} from 'react';import {supabaseBrowser} from '../../lib/supabase-browser';
+export default function NotificationBadge(){const [n,setN]=useState(0);useEffect(()=>{let t:any;const load=async()=>{const {data}=await supabaseBrowser.auth.getSession();if(!data.session)return setN(0);const r=await fetch('/api/account/notifications',{headers:{authorization:`Bearer ${data.session.access_token}`}});const j=await r.json();if(r.ok)setN((j.notifications||[]).filter((x:any)=>!x.read).length)};load();t=setInterval(load,30000);return()=>clearInterval(t)},[]);return <a className="notificationBadge" href="/account/notifications">Notifications {n>0&&<b>{n>99?'99+':n}</b>}</a>}

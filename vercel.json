@@ -1,0 +1,48 @@
+{
+  "crons": [
+    {
+      "path": "/api/internal/topup/worker",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/internal/providers/health",
+      "schedule": "*/10 * * * *"
+    },
+    {
+      "path": "/api/internal/providers/guard",
+      "schedule": "*/10 * * * *"
+    },
+    {
+      "path": "/api/internal/providers/recover",
+      "schedule": "*/10 * * * *"
+    },
+    {
+      "path": "/api/internal/pricing/chain",
+      "schedule": "*/15 * * * *"
+    },
+    {
+      "path": "/api/internal/providers/failover",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/internal/cart-recovery",
+      "schedule": "0 */6 * * *"
+    },
+    {
+      "path": "/api/internal/health-snapshot",
+      "schedule": "0 * * * *"
+    },
+    {
+      "path": "/api/internal/fraud-scan",
+      "schedule": "15 * * * *"
+    },
+    {
+      "path": "/api/internal/inventory-watch",
+      "schedule": "0 */2 * * *"
+    },
+    {
+      "path": "/api/internal/backup-snapshot",
+      "schedule": "30 2 * * *"
+    }
+  ]
+}

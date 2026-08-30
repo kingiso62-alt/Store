@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="efGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a2c61"/>
+      <stop offset="100%" stop-color="#27ae60"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" rx="12" fill="#081427"/>
+  <!-- Soccer Ball & Coin Symbol -->
+  <circle cx="200" cy="95" r="45" fill="url(#efGrad)" stroke="#f1c40f" stroke-width="4"/>
+  <circle cx="200" cy="95" r="32" fill="#f1c40f"/>
+  <text x="200" y="105" fill="#081427" font-size="28" font-weight="900" font-family="Arial Black, Impact, sans-serif" text-anchor="middle">C</text>
+  <text x="200" y="185" fill="#ffffff" font-size="28" font-weight="900" font-family="Arial Black, Impact, sans-serif" text-anchor="middle" letter-spacing="3">eFOOTBALL</text>
+  <text x="200" y="215" fill="#2ecc71" font-size="14" font-weight="bold" font-family="Arial, sans-serif" text-anchor="middle" letter-spacing="4">COINS TOP-UP</text>
+</svg>

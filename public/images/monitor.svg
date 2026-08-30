@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <circle cx="150" cy="150" r="130" fill="#f4f7fc"/>
+  <!-- Curved Screen Frame -->
+  <rect x="50" y="70" width="200" height="125" rx="8" fill="#0a2148" stroke="#b51f2d" stroke-width="3"/>
+  <!-- Screen Display -->
+  <rect x="58" y="78" width="184" height="109" rx="4" fill="#0a2c61"/>
+  <!-- Screen Graphic (Neon Game Horizon) -->
+  <path d="M 58 150 L 110 120 L 150 140 L 195 110 L 242 150 L 242 187 L 58 187 Z" fill="#13386d"/>
+  <circle cx="150" cy="115" r="18" fill="#b51f2d"/>
+  <!-- Stand Neck -->
+  <rect x="142" y="195" width="16" height="40" fill="#0a2148"/>
+  <!-- Stand V-Base -->
+  <path d="M 100 250 L 150 235 L 200 250" fill="none" stroke="#0a2148" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

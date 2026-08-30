@@ -1,0 +1,2 @@
+import Header from '../../../components/Header';import Footer from '../../../components/Footer';
+export default function Success(){return <><Header/><main className="wrap resultPage"><div className="resultCard success"><div className="resultIcon">✓</div><h1>Payment Successful</h1><p>Your payment was received. TOKIYO STORE is processing your order.</p><div className="resultActions"><a href="/account" className="btnBlue">VIEW MY ORDERS</a><a href="/" className="btnOutline">CONTINUE SHOPPING</a></div></div></main><Footer/></>}

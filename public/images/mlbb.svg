@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="mlbbGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8e44ad"/>
+      <stop offset="100%" stop-color="#2980b9"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" rx="12" fill="#140f24"/>
+  <polygon points="200,45 240,95 200,135 160,95" fill="url(#mlbbGrad)" stroke="#3498db" stroke-width="3"/>
+  <circle cx="200" cy="95" r="14" fill="#f1c40f"/>
+  <text x="200" y="185" fill="#ffffff" font-size="24" font-weight="900" font-family="Arial Black, Impact, sans-serif" text-anchor="middle" letter-spacing="2">MOBILE LEGENDS</text>
+  <text x="200" y="215" fill="#9b59b6" font-size="14" font-weight="bold" font-family="Arial, sans-serif" text-anchor="middle" letter-spacing="4">DIAMONDS & PASS</text>
+</svg>

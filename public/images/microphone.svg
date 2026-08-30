@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <circle cx="150" cy="150" r="130" fill="#f4f7fc"/>
+  <!-- Mic Capsule -->
+  <rect x="120" y="60" width="60" height="95" rx="30" fill="#0a2148" stroke="#b51f2d" stroke-width="3"/>
+  <!-- Mic Mesh -->
+  <line x1="130" y1="80" x2="170" y2="80" stroke="#425b80" stroke-width="2"/>
+  <line x1="130" y1="90" x2="170" y2="90" stroke="#425b80" stroke-width="2"/>
+  <line x1="130" y1="100" x2="170" y2="100" stroke="#425b80" stroke-width="2"/>
+  <!-- U-Mount -->
+  <path d="M 105 110 L 105 160 A 45 45 0 0 0 195 160 L 195 110" fill="none" stroke="#0a2c61" stroke-width="8" stroke-linecap="round"/>
+  <!-- Stand Shaft -->
+  <line x1="150" y1="205" x2="150" y2="245" stroke="#0a2148" stroke-width="8"/>
+  <!-- Round Base -->
+  <ellipse cx="150" cy="248" rx="55" ry="12" fill="#0a2148" stroke="#b51f2d" stroke-width="2"/>
+</svg>

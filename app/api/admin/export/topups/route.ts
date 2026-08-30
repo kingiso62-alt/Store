@@ -1,0 +1,5 @@
+import {NextResponse} from 'next/server';
+import {requirePermission} from '../../../../../lib/server/require-permission';
+import {supabaseAdmin} from '../../../../../lib/server/supabase-admin';
+function csv(rows:any[]){if(!rows.length)return '';const keys=Object.keys(rows[0]);const esc=(v:any)=>`"${String(v??'').replaceAll('"','""')}"`;return [keys.map(esc).join(','),...rows.map(r=>keys.map(k=>esc(typeof r[k]==='object'?JSON.stringify(r[k]):r[k])).join(','))].join('\n')}
+export async function GET(req:Request){const g=await requirePermission(req,'view_reports');if(g.error)return g.error;const {data,error}=await supabaseAdmin().from('api_orders').select('id,status,attempts,provider_id,provider_order_id,request_payload,created_at').order('created_at',{ascending:false}).limit(10000);if(error)return NextResponse.json({error:error.message},{status:500});return new Response(csv(data||[]),{headers:{'content-type':'text/csv; charset=utf-8','content-disposition':'attachment; filename="tokiyo-topups.csv"'}})}

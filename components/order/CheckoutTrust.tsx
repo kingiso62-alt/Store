@@ -1,0 +1,1 @@
+export default function CheckoutTrust(){return <div className="checkoutTrust"><div><b>Secure Checkout</b><small>Your order is verified before fulfillment.</small></div><div><b>Instant Top-Up Tracking</b><small>Digital orders can be tracked live.</small></div><div><b>Order Support</b><small>Keep your order number for fast support.</small></div></div>}

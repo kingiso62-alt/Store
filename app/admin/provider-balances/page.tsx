@@ -1,0 +1,10 @@
+'use client';
+import {FormEvent,useEffect,useState} from 'react';import {supabaseBrowser} from '../../../lib/supabase-browser';
+export default function ProviderBalances(){
+ const [rows,setRows]=useState<any[]>([]),[msg,setMsg]=useState('');
+ async function token(){const {data}=await supabaseBrowser.auth.getSession();return data.session?.access_token||''}
+ async function load(){const t=await token();const r=await fetch('/api/admin/provider-balances',{headers:{authorization:`Bearer ${t}`}});const j=await r.json();if(r.ok)setRows(j.providers||[]);else setMsg(j.error)}
+ useEffect(()=>{load()},[]);
+ async function add(e:FormEvent<HTMLFormElement>){e.preventDefault();const f=new FormData(e.currentTarget),t=await token();const r=await fetch('/api/admin/provider-balances',{method:'POST',headers:{'content-type':'application/json',authorization:`Bearer ${t}`},body:JSON.stringify({providerId:f.get('providerId'),balance:f.get('balance'),currency:f.get('currency')})});const j=await r.json();setMsg(r.ok?'Balance saved.':j.error);if(r.ok){e.currentTarget.reset();load()}}
+ return <main className="adminStandalone"><div className="pageHead"><div><small>ADMIN / PROVIDERS</small><h1>Provider Balances</h1></div></div><div className="providerLayout"><form className="adminForm" onSubmit={add}><label>Provider<select name="providerId" required><option value="">Select</option>{rows.map(x=><option key={x.id} value={x.id}>{x.name}</option>)}</select></label><label>Balance<input name="balance" type="number" step="0.01" required/></label><label>Currency<input name="currency" defaultValue="USD"/></label><button className="btnBlue">SAVE BALANCE</button>{msg&&<p>{msg}</p>}</form><div className="tableCard"><table><thead><tr><th>Provider</th><th>Balance</th><th>Currency</th><th>Updated</th></tr></thead><tbody>{rows.map(x=><tr key={x.id}><td>{x.name}</td><td>{x.balance?Number(x.balance.balance).toFixed(2):'-'}</td><td>{x.balance?.currency||'-'}</td><td>{x.balance?new Date(x.balance.created_at).toLocaleString():'-'}</td></tr>)}</tbody></table></div></div></main>
+}

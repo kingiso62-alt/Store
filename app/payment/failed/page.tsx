@@ -1,0 +1,2 @@
+import Header from '../../../components/Header';import Footer from '../../../components/Footer';
+export default function Failed(){return <><Header/><main className="wrap resultPage"><div className="resultCard failed"><div className="resultIcon">!</div><h1>Payment Failed</h1><p>The payment was not completed. Your order has not been fulfilled.</p><div className="resultActions"><a href="/checkout" className="btnRed">TRY AGAIN</a><a href="/cart" className="btnOutline">BACK TO CART</a></div></div></main><Footer/></>}

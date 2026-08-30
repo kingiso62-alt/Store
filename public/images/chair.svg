@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <circle cx="150" cy="150" r="130" fill="#f4f7fc"/>
+  <!-- Headrest -->
+  <rect x="115" y="45" width="70" height="35" rx="10" fill="#0a2c61"/>
+  <rect x="130" y="55" width="40" height="15" rx="4" fill="#b51f2d"/>
+  <!-- Backrest -->
+  <path d="M 105 85 L 195 85 L 180 175 L 120 175 Z" fill="#0a2148"/>
+  <path d="M 118 95 L 182 95 L 172 165 L 128 165 Z" fill="#133663" stroke="#b51f2d" stroke-width="2"/>
+  <!-- Seat Cushion -->
+  <rect x="95" y="175" width="110" height="28" rx="8" fill="#0a2c61"/>
+  <rect x="105" y="180" width="90" height="18" rx="4" fill="#b51f2d"/>
+  <!-- Armrests -->
+  <rect x="80" y="145" width="18" height="35" rx="5" fill="#1b2a40"/>
+  <rect x="202" y="145" width="18" height="35" rx="5" fill="#1b2a40"/>
+  <!-- Base Stand -->
+  <line x1="150" y1="203" x2="150" y2="245" stroke="#0a2148" stroke-width="8"/>
+  <!-- 5-Star Wheel Base -->
+  <line x1="150" y1="245" x2="90" y2="265" stroke="#0a2148" stroke-width="6" stroke-linecap="round"/>
+  <line x1="150" y1="245" x2="210" y2="265" stroke="#0a2148" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="90" cy="265" r="6" fill="#b51f2d"/>
+  <circle cx="210" cy="265" r="6" fill="#b51f2d"/>
+  <circle cx="150" cy="250" r="8" fill="#0a2c61"/>
+</svg>

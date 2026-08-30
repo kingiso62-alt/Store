@@ -1,0 +1,1 @@
+import OrdersTable from '../../../components/admin/OrdersTable';export default function AdminOrders(){return <main className="adminStandalone"><div className="pageHead"><div><small>ADMIN / ORDERS</small><h1>Orders</h1></div></div><OrdersTable/></main>}

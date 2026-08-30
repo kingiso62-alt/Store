@@ -1,0 +1,3 @@
+import {NextResponse} from 'next/server';import {supabaseAdmin} from '../../../../lib/server/supabase-admin';
+async function uid(req:Request){const t=req.headers.get('authorization')?.replace('Bearer ','');if(!t)return null;const {data}=await supabaseAdmin().auth.getUser(t);return data.user?.id||null}
+export async function GET(req:Request){const id=await uid(req);if(!id)return NextResponse.json({error:'Unauthorized'},{status:401});const {data,error}=await supabaseAdmin().from('orders').select('id,order_number,status,order_type,total,created_at').eq('user_id',id).order('created_at',{ascending:false});return error?NextResponse.json({error:error.message},{status:500}):NextResponse.json({orders:data||[]})}

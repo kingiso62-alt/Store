@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="popBg" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#142c54"/>
+      <stop offset="70%" stop-color="#071224"/>
+      <stop offset="100%" stop-color="#02060d"/>
+    </radialGradient>
+    <linearGradient id="planeGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff099"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="cloudGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glowPop" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="500" height="500" rx="36" fill="url(#popBg)"/>
+
+  <!-- Energy Burst / Clouds -->
+  <circle cx="250" cy="210" r="140" fill="url(#cloudGlow)" filter="url(#glowPop)"/>
+  <ellipse cx="250" cy="240" rx="160" ry="60" fill="#0ea5e9" opacity="0.2" filter="url(#glowPop)"/>
+
+  <!-- Wings / Speed Lines -->
+  <path d="M 80,260 L 250,190 L 420,260 L 250,220 Z" fill="#38bdf8" opacity="0.3"/>
+  <path d="M 120,280 L 250,210 L 380,280 L 250,235 Z" fill="#f59e0b" opacity="0.4"/>
+
+  <!-- Golden 3D Jet / Airplane -->
+  <g transform="translate(250, 200) rotate(-15) scale(1.15)">
+    <!-- Jet Fuselage -->
+    <path d="M -15,-100 Q 0,-125 15,-100 L 24,40 Q 0,70 -24,40 Z" fill="url(#planeGold)" filter="url(#glowPop)"/>
+    <!-- Cockpit Glass -->
+    <ellipse cx="0" cy="-60" rx="8" ry="20" fill="#0369a1"/>
+    <!-- Left Main Wing -->
+    <path d="M -20,-20 L -120,40 L -115,58 L -20,25 Z" fill="url(#planeGold)"/>
+    <path d="M -115,40 L -90,45 L -20,22 Z" fill="#fbbf24"/>
+    <!-- Right Main Wing -->
+    <path d="M 20,-20 L 120,40 L 115,58 L 20,25 Z" fill="url(#planeGold)"/>
+    <path d="M 115,40 L 90,45 L 20,22 Z" fill="#fbbf24"/>
+    <!-- Tail Fin -->
+    <path d="M 0,20 L 0,-15 L 12,30 L 0,45 Z" fill="#b45309"/>
+    <!-- Propellers / Jet Engines Glow -->
+    <circle cx="-60" cy="45" r="12" fill="#38bdf8" filter="url(#glowPop)"/>
+    <circle cx="60" cy="45" r="12" fill="#38bdf8" filter="url(#glowPop)"/>
+  </g>
+
+  <!-- Popularity Stars / Coins -->
+  <g fill="#fbbf24" filter="url(#glowPop)">
+    <polygon points="100,120 108,136 126,138 112,150 116,168 100,158 84,168 88,150 74,138 92,136" transform="scale(0.7) translate(40, 40)"/>
+    <polygon points="400,130 408,146 426,148 412,160 416,178 400,168 384,178 388,160 374,148 392,146" transform="scale(0.8) translate(70, 30)"/>
+  </g>
+
+  <!-- PUBG POPULARITY Banner Label -->
+  <g transform="translate(250, 390)">
+    <rect x="-170" y="-35" width="340" height="52" rx="10" fill="rgba(8, 20, 42, 0.95)" stroke="#f59e0b" stroke-width="2.5" filter="url(#glowPop)"/>
+    <text x="0" y="-8" fill="#ffffff" font-size="14" font-weight="900" text-anchor="middle" letter-spacing="3" font-family="sans-serif">PUBG MOBILE</text>
+    <text x="0" y="10" fill="#f59e0b" font-size="13" font-weight="900" text-anchor="middle" letter-spacing="2" font-family="sans-serif">POPULARITY BATTLE</text>
+  </g>
+</svg>

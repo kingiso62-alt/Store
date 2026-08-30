@@ -1,0 +1,11 @@
+'use client';
+import {FormEvent,useEffect,useState} from 'react';import {supabaseBrowser} from '../../../../../lib/supabase-browser';
+export default function DeliveryAdmin({params}:{params:Promise<{id:string}>}){
+ const [id,setId]=useState(''),[data,setData]=useState<any>(null),[msg,setMsg]=useState('');
+ useEffect(()=>{params.then(x=>setId(x.id))},[params]);
+ async function token(){const {data}=await supabaseBrowser.auth.getSession();return data.session?.access_token||''}
+ async function load(){if(!id)return;const t=await token();const r=await fetch(`/api/admin/orders/${id}/detail`,{headers:{authorization:`Bearer ${t}`}});const j=await r.json();if(r.ok)setData(j);else setMsg(j.error)}
+ useEffect(()=>{load()},[id]);
+ async function submit(e:FormEvent<HTMLFormElement>){e.preventDefault();const f=new FormData(e.currentTarget),t=await token();const r=await fetch(`/api/admin/orders/${id}/delivery`,{method:'POST',headers:{'content-type':'application/json',authorization:`Bearer ${t}`},body:JSON.stringify({title:f.get('title'),description:f.get('description'),location:f.get('location'),status:f.get('status')})});const j=await r.json();setMsg(r.ok?'Delivery update added.':j.error);if(r.ok){e.currentTarget.reset();load()}}
+ return <main className="adminStandalone"><div className="pageHead"><div><small>ADMIN / ORDER DELIVERY</small><h1>{data?.order?.order_number||'Order'}</h1></div></div>{msg&&<p>{msg}</p>}<div className="deliveryAdminGrid"><form className="adminForm" onSubmit={submit}><label>Title<input name="title" placeholder="Courier picked up" required/></label><label>Description<textarea name="description"/></label><label>Location<input name="location" placeholder="Mogadishu"/></label><label>Status<select name="status"><option value="">Keep current</option><option value="confirmed">Confirmed</option><option value="preparing">Preparing</option><option value="out_for_delivery">Out for delivery</option><option value="delivered">Delivered</option></select></label><button className="btnBlue">ADD UPDATE</button></form><div className="panel"><h3>Timeline</h3><div className="deliveryTimeline">{(data?.events||[]).map((e:any)=><article key={e.id}><i></i><div><b>{e.title}</b><p>{e.description||''}</p><small>{new Date(e.created_at).toLocaleString()}</small></div></article>)}</div></div></div></main>
+}

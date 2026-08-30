@@ -1,0 +1,2 @@
+import {NextResponse} from 'next/server';import {requirePermission} from '../../../../lib/server/require-permission';import {supabaseAdmin} from '../../../../lib/server/supabase-admin';
+export async function GET(req:Request){const g=await requirePermission(req,'view_reports');if(g.error)return g.error;const {data,error}=await supabaseAdmin().from('abandoned_carts').select('*').order('updated_at',{ascending:false}).limit(300);return error?NextResponse.json({error:error.message},{status:500}):NextResponse.json({carts:data||[]})}

@@ -1,0 +1,25 @@
+import { LayoutDashboard, ShoppingBag, Boxes, Gamepad2, Users, CreditCard, Plug, Ticket, BarChart3, Settings, PackageSearch, ShoppingCart } from 'lucide-react';
+import DashboardClient from '../../components/admin/DashboardClient';
+const menu=[['Dashboard','/admin',LayoutDashboard],['Orders','/admin/orders',ShoppingBag],['Products','/admin/products',Boxes],['Top-Up Products','/topup',Gamepad2],['Top-Up Packages','/admin/topup-packages',Gamepad2],['Provider Balances','/admin/provider-balances',CreditCard],['Profit & Margin','/admin/profit',BarChart3],['Cost Alerts','/admin/cost-alerts',Ticket],['Staff','/admin/staff',Users],['Permissions','/admin/permissions',Settings],['Player Fields','/admin/player-fields',Gamepad2],['Margin Protection','/admin/pricing-protection',BarChart3],['Provider Alerts','/admin/provider-alerts',Ticket],['User Permissions','/admin/user-permissions',Users],['Sandbox Tests','/admin/sandbox-tests',BarChart3],['Launch Dashboard','/admin/launch-dashboard',LayoutDashboard],
+['Launch Checklist','/admin/launch-checklist',Settings],
+['Top-Up Orders','/admin/topup-orders',Gamepad2],
+['Ops Notifications','/admin/notifications-center',Ticket],
+['Activity Feed','/admin/activity',BarChart3],
+['Analytics','/admin/analytics',BarChart3],['System Health','/admin/system-health',LayoutDashboard],
+['Reviews','/admin/reviews',Ticket],
+['Customers','/admin/customers',Users],
+['Support Tickets','/admin/support',Ticket],
+['Refunds','/admin/refunds',Ticket],
+['Coupons','/admin/coupons',Ticket],
+['Fraud Review','/admin/fraud-flags',Ticket],
+['Inventory Alerts','/admin/inventory-alerts',ShoppingCart],
+['Deliveries','/admin/delivery-orders',ShoppingCart],
+['Accessory Returns','/admin/returns',Ticket],
+['Stock Movements','/admin/stock-movements',ShoppingCart],
+['Daily Sales','/admin/sales-summary',BarChart3],
+['Operations Alerts','/admin/operations-alerts',Ticket],
+['Profit Report','/admin/profit-report',BarChart3],
+['Shipping Zones','/admin/shipping-zones',Settings],
+['Backup Status','/admin/backup-status',LayoutDashboard],
+['Cart Recovery','/admin/cart-recovery',ShoppingCart],['Customers','/admin/customers',Users],['Inventory','/admin/inventory',PackageSearch],['Categories','/admin/categories',Boxes],['Brands','/admin/brands',Ticket],['Returns','/admin/returns',BarChart3],['Delivery','/admin/delivery',PackageSearch],['Notifications','/admin/notifications',Ticket],['Refunds','/admin/refunds',BarChart3],['Audit Log','/admin/audit',BarChart3],['Provider Health','/admin/provider-health',Plug],['Payment Methods','/admin/payment-methods',CreditCard],['Coupons','/admin/coupons',Ticket],['Environment','/admin/env-check',Settings],['Banners','/admin/banners',Ticket],['Reports','/admin/reports',BarChart3],['Security Check','/admin/security-check',Settings],['Error Logs','/admin/errors',BarChart3],['Payments','#',CreditCard],['API Providers','/admin/providers',Plug],['Coupons','#',Ticket],['Reports','#',BarChart3],['Settings','#',Settings]];
+export default function Admin(){return <main className="adminShell"><aside className="adminSide"><div className="brand adminBrand"><img src="/images/tokiyo-logo.png" alt="TOKIYO STORE" className="adminLogoImg" /></div>{menu.map(([n,h,I]:any)=><a className={n==='Dashboard'?'sideLink active':'sideLink'} href={h} key={n}><I size={17}/>{n}</a>)}</aside><section className="adminMain"><div className="adminTop"><input placeholder="Search anything..."/><div>Admin <small>Protected dashboard</small></div></div><h1>Dashboard</h1><DashboardClient/></section></main>}

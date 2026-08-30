@@ -1,0 +1,12 @@
+'use client';
+import {FormEvent,useEffect,useState} from 'react';import {supabaseBrowser} from '../../lib/supabase-browser';
+
+export default function ProductEngagement({productId}:{productId:string}){
+ const [reviews,setReviews]=useState<any[]>([]),[msg,setMsg]=useState('');
+ async function session(){const {data}=await supabaseBrowser.auth.getSession();return data.session?.access_token||''}
+ async function load(){const r=await fetch(`/api/products/${productId}/reviews`);const j=await r.json();if(r.ok)setReviews(j.reviews||[])}
+ useEffect(()=>{load();(async()=>{const t=await session();if(t)fetch('/api/account/recently-viewed',{method:'POST',headers:{'content-type':'application/json',authorization:`Bearer ${t}`},body:JSON.stringify({productId})})})()},[productId]);
+ async function wish(){const t=await session();if(!t)return setMsg('Please login first.');const r=await fetch('/api/account/wishlist',{method:'POST',headers:{'content-type':'application/json',authorization:`Bearer ${t}`},body:JSON.stringify({productId})});setMsg(r.ok?'Added to wishlist.':'Could not add to wishlist.')}
+ async function review(e:FormEvent<HTMLFormElement>){e.preventDefault();const t=await session();if(!t)return setMsg('Please login to review.');const f=new FormData(e.currentTarget);const r=await fetch(`/api/products/${productId}/reviews`,{method:'POST',headers:{'content-type':'application/json',authorization:`Bearer ${t}`},body:JSON.stringify({rating:f.get('rating'),title:f.get('title'),body:f.get('body')})});const j=await r.json();setMsg(r.ok?'Review submitted for approval.':j.error)}
+ return <section className="engagementBlock"><button className="wishBtn" onClick={wish}>♡ ADD TO WISHLIST</button>{msg&&<p>{msg}</p>}<div className="reviewsGrid"><div><h3>Customer Reviews</h3>{reviews.length?reviews.map(x=><article className="reviewCard" key={x.id}><b>{'★'.repeat(x.rating)}{'☆'.repeat(5-x.rating)}</b><h4>{x.title||'Review'}</h4><p>{x.body}</p><small>{x.profiles?.full_name||'Customer'}</small></article>):<p>No approved reviews yet.</p>}</div><form className="adminForm" onSubmit={review}><h3>Write a Review</h3><label>Rating<select name="rating" defaultValue="5"><option value="5">5 — Excellent</option><option value="4">4 — Very good</option><option value="3">3 — Good</option><option value="2">2 — Fair</option><option value="1">1 — Poor</option></select></label><label>Title<input name="title"/></label><label>Review<textarea name="body" required/></label><button className="btnBlue">SUBMIT REVIEW</button></form></div></section>
+}

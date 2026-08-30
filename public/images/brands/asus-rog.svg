@@ -1,0 +1,7 @@
+<svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
+      <g>
+        <path d="M10 20 Q20 12 30 25 Q20 22 10 32 Z" fill="#FF0033"/>
+        <text x="36" y="33" font-family="Impact, sans-serif" font-size="22" letter-spacing="2" fill="#FF0033">ROG</text>
+        <text x="82" y="33" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="900" fill="#0a2148"> ASUS</text>
+      </g>
+    </svg>
