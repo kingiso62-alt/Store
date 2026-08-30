@@ -4,6 +4,7 @@ import LuckySpinModal from '../components/features/LuckySpinModal';
 import LivePurchaseNotifier from '../components/features/LivePurchaseNotifier';
 import SmartWhatsAppWidget from '../components/features/SmartWhatsAppWidget';
 import PwaInstallPrompt from '../components/features/PwaInstallPrompt';
+import PushNotificationPrompt from '../components/features/PushNotificationPrompt';
 import './globals.css';
 
 export const viewport = {
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <CartSnapshotSync />
         <PwaInstallPrompt />
+        <PushNotificationPrompt />
         {children}
         <LuckySpinModal />
         <LivePurchaseNotifier />

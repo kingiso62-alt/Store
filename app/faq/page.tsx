@@ -122,6 +122,16 @@ export default function FaqPage() {
             )}
           </div>
 
+          {/* Security Notice Section */}
+          <div style={{ marginTop: '20px' }}>
+            <div style={{ background: '#fffbeb', border: '1.5px solid #fde047', borderRadius: '12px', padding: '14px 16px', color: '#854d0e', fontSize: '12px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <span style={{ fontSize: '18px' }}>🛡️</span>
+              <p style={{ margin: 0, lineHeight: '1.4' }}>
+                <b>Digniin Amni:</b> Tokiyo Store marna kuuma weydiinayo Password-kaaga ama SMS Code-kaaga. Shubashadu waa 100% Player ID oo kaliya.
+              </p>
+            </div>
+          </div>
+
           {/* Direct WhatsApp Help Box */}
           <div style={{ marginTop: '26px', padding: '18px', background: '#0a2c61', borderRadius: '14px', color: '#ffffff', textAlign: 'center' }}>
             <h3 style={{ fontSize: '15px', fontWeight: 800, margin: '0 0 6px' }}>Miyaad qabtaa su&apos;aal kale oo aan halkan ku jirin?</h3>

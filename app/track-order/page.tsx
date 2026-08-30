@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { 
   ChevronLeft, RotateCw, ShoppingBag, CheckCircle2, 
   Wallet, Search, Clock, ArrowRight, ExternalLink,
-  PhoneCall, ShieldCheck, Copy, Check
+  PhoneCall, ShieldCheck, Copy, Check, Zap
 } from 'lucide-react';
 
 interface OrderItem {
@@ -268,7 +268,7 @@ export default function OrdersPage() {
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '4px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', paddingTop: '4px' }}>
                   <button 
                     type="button" 
                     onClick={() => copyRef(ord.id, ord.id)}
@@ -278,15 +278,36 @@ export default function OrdersPage() {
                     <span>{copiedId === ord.id ? 'Waa la guuriyay!' : ord.id}</span>
                   </button>
 
-                  <a 
-                    href={`https://wa.me/252613667676?text=Asc%20TOKIYO%20STORE%20dalabkeyga%20${ord.id}%20ayaan%20su%27aal%20ka%20qabaa`}
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', color: '#25d366', fontSize: '11.5px', fontWeight: 800, textDecoration: 'none' }}
-                  >
-                    <PhoneCall size={13} />
-                    <span>WhatsApp Help</span>
-                  </a>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <Link
+                      href={`/topup/order?game=${ord.game.toLowerCase().includes('pubg') ? 'pubg' : ord.game.toLowerCase().includes('free fire') ? 'freefire' : 'efootball_android'}`}
+                      style={{
+                        background: '#081d3d',
+                        color: '#ffffff',
+                        padding: '4px 10px',
+                        borderRadius: '6px',
+                        fontSize: '11px',
+                        fontWeight: 800,
+                        textDecoration: 'none',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '4px'
+                      }}
+                    >
+                      <Zap size={12} color="#facc15" />
+                      <span>⚡ Dib U Dalbo</span>
+                    </Link>
+
+                    <a 
+                      href={`https://wa.me/252613667676?text=Asc%20TOKIYO%20STORE%20dalabkeyga%20${ord.id}%20ayaan%20su%27aal%20ka%20qabaa`}
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', color: '#25d366', fontSize: '11.5px', fontWeight: 800, textDecoration: 'none' }}
+                    >
+                      <PhoneCall size={13} />
+                      <span>WhatsApp Help</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}

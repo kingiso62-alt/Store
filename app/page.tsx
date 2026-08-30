@@ -1,18 +1,22 @@
+'use client';
+import { useState } from 'react';
 import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import FlashSaleBanner from '../components/features/FlashSaleBanner';
 import CustomerReviewsSection from '../components/features/CustomerReviewsSection';
 import VipLoyaltySection from '../components/features/VipLoyaltySection';
+import SecurityNoticeSection from '../components/features/SecurityNoticeSection';
 import { 
   Zap, ShieldCheck, Sparkles, ArrowRight, 
-  PhoneCall, CreditCard, Trophy
+  PhoneCall, CreditCard, Trophy, Gamepad2, Flame
 } from 'lucide-react';
 
 // 12 Games strictly ordered as requested by user
 const games = [
   { 
     name: 'Pubg Mobile', 
+    category: 'pubg',
     img: '/images/games/pubg-mobile.png', 
     badge: 'INSTANT', 
     currency: 'Unknown Cash (UC)', 
@@ -23,6 +27,7 @@ const games = [
   },
   { 
     name: 'Free Fire', 
+    category: 'freefire',
     img: '/images/games/free-fire.png', 
     badge: 'INSTANT', 
     currency: 'Garena Diamonds', 
@@ -33,6 +38,7 @@ const games = [
   },
   { 
     name: 'Pubg Korean', 
+    category: 'pubg',
     img: '/images/games/pubg-korean.png', 
     badge: 'MANUAL', 
     currency: 'Donkatsu Medals & UC', 
@@ -43,6 +49,7 @@ const games = [
   },
   { 
     name: 'E-Football Coins iOS', 
+    category: 'efootball',
     img: '/images/games/efootball-ios.png', 
     badge: 'MANUAL', 
     currency: 'eFootball iOS Coins', 
@@ -53,76 +60,84 @@ const games = [
   },
   { 
     name: 'E-Football Coins Android', 
+    category: 'efootball',
     img: '/images/games/efootball-android.png', 
     badge: 'MANUAL', 
     currency: 'eFootball Android Coins', 
     rating: '4.9', 
     tag: 'Android',
     href: '/topup/order?game=efootball_android',
-    accentColor: '#107c41'
+    accentColor: '#0a2c61'
   },
   { 
     name: 'Blood Strike Mena', 
+    category: 'other',
     img: '/images/games/blood-strike.png', 
     badge: 'INSTANT', 
-    currency: 'Gold Top-Up', 
-    rating: '4.6', 
-    tag: 'New',
-    href: '/topup/order?game=bloodstrike',
-    accentColor: '#e74c3c'
-  },
-  { 
-    name: 'Roblox', 
-    img: '/images/games/roblox.png', 
-    badge: 'INSTANT', 
-    currency: 'Gift Card PIN', 
-    rating: '4.7', 
-    tag: 'Instant PIN',
-    href: '/topup/order?game=roblox',
-    accentColor: '#2ecc71'
-  },
-  { 
-    name: 'Mobile Legends', 
-    img: '/images/games/mobile-legends.png', 
-    badge: 'INSTANT', 
-    currency: 'Diamonds & Pass', 
-    rating: '4.9', 
-    tag: 'Hot',
-    href: '/topup/order?game=mlbb',
-    accentColor: '#9b59b6'
-  },
-  { 
-    name: 'Call of Duty Mobile', 
-    img: '/images/games/cod-mobile.png', 
-    badge: 'INSTANT', 
-    currency: 'COD Points (CP)', 
+    currency: 'Gold & Strike Pass', 
     rating: '4.8', 
-    tag: 'Instant',
-    href: '/topup/order?game=codm',
+    tag: 'Fast',
+    href: '/topup/order?game=bloodstrike',
     accentColor: '#e67e22'
   },
   { 
-    name: 'X-Suits', 
-    img: '/images/games/pubg-xsuits-official.png', 
-    badge: '7-STAR', 
-    currency: 'Druvaen & Mythic X-Suits', 
-    rating: '5.0', 
-    tag: 'Mythic',
-    href: '/topup/order?service=xsuits',
-    accentColor: '#a855f7'
+    name: 'Roblox Robux Digital Pin', 
+    category: 'other',
+    img: '/images/games/roblox.png', 
+    badge: 'INSTANT', 
+    currency: 'Robux Digital Card', 
+    rating: '4.9', 
+    tag: 'Digital Pin',
+    href: '/topup/order?game=roblox',
+    accentColor: '#e74c3c'
   },
   { 
-    name: 'Cars', 
-    img: '/images/games/pubg-cars-official.png', 
-    badge: 'OFFICIAL', 
-    currency: 'Ferrari & Lambo Models', 
+    name: 'Call of Duty Mobile (CP)', 
+    category: 'other',
+    img: '/images/games/cod-mobile.png', 
+    badge: 'INSTANT', 
+    currency: 'CP Points & Battle Pass', 
+    rating: '4.8', 
+    tag: 'Global',
+    href: '/topup/order?game=codm',
+    accentColor: '#2c3e50'
+  },
+  { 
+    name: 'Mobile Legends: Bang Bang', 
+    category: 'other',
+    img: '/images/games/mobile-legends.png', 
+    badge: 'INSTANT', 
+    currency: 'Diamonds & Twilight Pass', 
     rating: '4.9', 
+    tag: 'Global',
+    href: '/topup/order?game=mlbb',
+    accentColor: '#3498db'
+  },
+  { 
+    name: 'X-Suits (Official)', 
+    category: 'mythic',
+    img: '/images/games/pubg-xsuits-official.png', 
+    badge: '7-STAR', 
+    currency: '7-Star Mythic Upgrade', 
+    rating: '5.0', 
+    tag: 'Official',
+    href: '/topup/order?service=xsuits',
+    accentColor: '#f1c40f'
+  },
+  { 
+    name: 'Cars (Official)', 
+    category: 'mythic',
+    img: '/images/games/pubg-cars-official.png', 
+    badge: 'FERRARI', 
+    currency: 'Supercar Master Key', 
+    rating: '5.0', 
     tag: 'Official',
     href: '/topup/order?service=cars',
     accentColor: '#dc1424'
   },
   { 
     name: 'Popularity Battle', 
+    category: 'mythic',
     img: '/images/games/pubg-popularity-official.png', 
     badge: 'MANUAL', 
     currency: 'Airplane / Jet / Yacht', 
@@ -133,7 +148,22 @@ const games = [
   }
 ];
 
+const categoryTabs = [
+  { id: 'all', label: '🌟 Dhammaan (All Games)' },
+  { id: 'pubg', label: '🪙 PUBG Mobile' },
+  { id: 'freefire', label: '💎 Free Fire' },
+  { id: 'efootball', label: '⚽ eFootball' },
+  { id: 'mythic', label: '👑 Mythic & Supercars' },
+  { id: 'other', label: '🎮 Ciyaaraha Kale' }
+];
+
 export default function Home() {
+  const [activeTab, setActiveTab] = useState('all');
+
+  const filteredGames = activeTab === 'all'
+    ? games
+    : games.filter((g) => g.category === activeTab);
+
   return (
     <>
       <Header />
@@ -226,17 +256,44 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 2. POPULAR GAMES SECTION HEADER */}
-        <div className="gameSectionHeaderRow">
+        {/* 2. POPULAR GAMES SECTION HEADER WITH CATEGORY FILTER PILLS */}
+        <div className="gameSectionHeaderRow" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '14px' }}>
           <div className="gameSectionTitleGroup">
             <h2 className="gameSectionMainTitle">POPULAR GAMES</h2>
             <span className="gameSectionBadge">TOP-UP SELECTION</span>
+          </div>
+
+          {/* Interactive Category Filter Pills */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', width: '100%' }}>
+            {categoryTabs.map((tab) => {
+              const isCurrent = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveTab(tab.id)}
+                  style={{
+                    background: isCurrent ? '#081d3d' : '#f1f5f9',
+                    color: isCurrent ? '#ffffff' : '#0a2c61',
+                    border: `1.5px solid ${isCurrent ? '#081d3d' : '#e2e8f0'}`,
+                    padding: '6px 14px',
+                    borderRadius: '20px',
+                    fontSize: '12px',
+                    fontWeight: 800,
+                    cursor: 'pointer',
+                    transition: 'all .15s ease'
+                  }}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
           </div>
         </div>
 
         {/* 3. ORDERED 12 ESPORTS GAME CARDS GRID (3-BY-3 SQUIRCLE STYLE) */}
         <section className="esportsGameGrid biriqGridStyle">
-          {games.map((g) => (
+          {filteredGames.map((g) => (
             <Link href={g.href} key={g.name} className="biriqGameCard">
               <div className="biriqMediaWrap">
                 <img src={g.img} alt={g.name} className="biriqGameImg" />
@@ -280,13 +337,16 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 6. VIP LOYALTY CLUB SECTION */}
+        {/* 6. SECURITY & ANTI-FRAUD NOTICE */}
+        <SecurityNoticeSection />
+
+        {/* 7. VIP LOYALTY CLUB SECTION */}
         <VipLoyaltySection />
 
-        {/* 7. CUSTOMER REVIEWS & TESTIMONIALS */}
+        {/* 8. CUSTOMER REVIEWS & TESTIMONIALS */}
         <CustomerReviewsSection />
 
-        {/* 8. PURE GAMING TOP-UP GUARANTEES */}
+        {/* 9. PURE GAMING TOP-UP GUARANTEES */}
         <section className="luxuryBenefitsStrip wrap">
           <div className="benefitCard">
             <div className="benefitIconWrap benefitIconDelivery">
