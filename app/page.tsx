@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import FlashSaleBanner from '../components/features/FlashSaleBanner';
 import CustomerReviewsSection from '../components/features/CustomerReviewsSection';
+import CustomerReelsSection from '../components/features/CustomerReelsSection';
 import VipLoyaltySection from '../components/features/VipLoyaltySection';
 import SecurityNoticeSection from '../components/features/SecurityNoticeSection';
 import PriceGuaranteeBadge from '../components/features/PriceGuaranteeBadge';
@@ -347,7 +348,10 @@ export default function Home() {
         {/* 7. VIP LOYALTY CLUB SECTION */}
         <VipLoyaltySection />
 
-        {/* 8. CUSTOMER REVIEWS & TESTIMONIALS */}
+        {/* 8. 15-SECOND DELIVERY REELS */}
+        <CustomerReelsSection />
+
+        {/* 9. CUSTOMER REVIEWS & TESTIMONIALS */}
         <CustomerReviewsSection />
 
         {/* 9. PURE GAMING TOP-UP GUARANTEES */}

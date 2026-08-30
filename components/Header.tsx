@@ -7,7 +7,7 @@ import {
   Truck, Download, Menu, X, Home, ShoppingBag, 
   KeyRound, Wallet, Award, Info, 
   HelpCircle, PhoneCall, Heart, ShoppingCart, Search, Trophy,
-  Users, Activity, Calculator, Brain, Gift, Flame, Calendar
+  Users, Activity, Calculator, Brain, Gift, Flame, Calendar, Tv
 } from 'lucide-react';
 import { supabaseBrowser } from '../lib/supabase-browser';
 import QuickSearchModal from './features/QuickSearchModal';
@@ -95,13 +95,21 @@ export default function Header() {
           </div>
 
           <div className="topUtilityLinks">
+            <Link
+              href="/mystery-box"
+              style={{ background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)', color: '#ffffff', borderRadius: '4px', padding: '2px 8px', fontSize: '10.5px', fontWeight: 900, display: 'inline-flex', alignItems: 'center', gap: '4px', textDecoration: 'none' }}
+            >
+              <Gift size={12} />
+              <span>Mystery Box 🎁</span>
+            </Link>
+
             <button
               type="button"
               onClick={() => setStreakOpen(true)}
               style={{ background: 'rgba(34, 197, 94, 0.15)', border: '1px solid #22c55e', color: '#86efac', borderRadius: '4px', padding: '2px 7px', cursor: 'pointer', fontSize: '10.5px', fontWeight: 900, display: 'inline-flex', alignItems: 'center', gap: '4px' }}
             >
               <Calendar size={12} />
-              <span>7-Day Streak 🔥</span>
+              <span>Streak 🔥</span>
             </button>
 
             <button
@@ -119,7 +127,7 @@ export default function Header() {
               style={{ background: 'transparent', border: 0, color: '#93c5fd', cursor: 'pointer', fontSize: '11px', fontWeight: 800, display: 'inline-flex', alignItems: 'center', gap: '4px' }}
             >
               <Calculator size={13} />
-              <span>🇸🇴 USD ⇄ SOS</span>
+              <span>USD ⇄ SOS</span>
             </button>
 
             <button
@@ -134,7 +142,7 @@ export default function Header() {
             {deferredPrompt && (
               <button onClick={handleInstallClick} className="topPwaBtn">
                 <Download size={12} />
-                <span>Install App</span>
+                <span>Install</span>
               </button>
             )}
 
@@ -168,6 +176,10 @@ export default function Header() {
             <Link href="/vouchers" className={`unifiedNavLink ${pathname === '/vouchers' ? 'active' : ''}`}>
               <Gift size={15} className="navItemIcon" />
               <span>Gift Cards</span>
+            </Link>
+            <Link href="/streams" className={`unifiedNavLink ${pathname === '/streams' ? 'active' : ''}`}>
+              <Tv size={15} className="navItemIcon" />
+              <span>Streams</span>
             </Link>
             <Link href="/track-order" className={`unifiedNavLink ${pathname === '/track-order' ? 'active' : ''}`}>
               <Truck size={15} className="navItemIcon" />
@@ -273,7 +285,17 @@ export default function Header() {
                 <span className="cleanDrawerLabel">Home</span>
               </Link>
 
-              {/* 2. Bulk Top-Up */}
+              {/* 2. Mystery Box */}
+              <Link 
+                href="/mystery-box" 
+                className={`cleanDrawerItem ${pathname === '/mystery-box' ? 'active' : ''}`} 
+                onClick={() => setMobileNavOpen(false)}
+              >
+                <Gift size={19} className="cleanDrawerIcon" />
+                <span className="cleanDrawerLabel">Lucky Mystery Box 🎁</span>
+              </Link>
+
+              {/* 3. Bulk Top-Up */}
               <Link 
                 href="/bulk-topup" 
                 className={`cleanDrawerItem ${pathname === '/bulk-topup' ? 'active' : ''}`} 
@@ -283,7 +305,7 @@ export default function Header() {
                 <span className="cleanDrawerLabel">Clan &amp; Squad Bulk Top-Up</span>
               </Link>
 
-              {/* 3. Gift Cards */}
+              {/* 4. Gift Cards */}
               <Link 
                 href="/vouchers" 
                 className={`cleanDrawerItem ${pathname === '/vouchers' ? 'active' : ''}`} 
@@ -293,7 +315,17 @@ export default function Header() {
                 <span className="cleanDrawerLabel">Digital Gift Cards &amp; Vouchers</span>
               </Link>
 
-              {/* 4. Orders */}
+              {/* 5. Live Streams */}
+              <Link 
+                href="/streams" 
+                className={`cleanDrawerItem ${pathname === '/streams' ? 'active' : ''}`} 
+                onClick={() => setMobileNavOpen(false)}
+              >
+                <Tv size={19} className="cleanDrawerIcon" />
+                <span className="cleanDrawerLabel">Somali Esports Streams 📺</span>
+              </Link>
+
+              {/* 6. Orders */}
               <Link 
                 href="/track-order" 
                 className={`cleanDrawerItem ${pathname === '/track-order' ? 'active' : ''}`} 
@@ -303,7 +335,7 @@ export default function Header() {
                 <span className="cleanDrawerLabel">Orders</span>
               </Link>
 
-              {/* 5. Refer $1.00 */}
+              {/* 7. Refer $1.00 */}
               <Link 
                 href="/referral" 
                 className={`cleanDrawerItem ${pathname === '/referral' ? 'active' : ''}`} 
@@ -313,7 +345,7 @@ export default function Header() {
                 <span className="cleanDrawerLabel">Refer a Friend ($0.50 Bonus)</span>
               </Link>
 
-              {/* 6. Tournaments */}
+              {/* 8. Tournaments */}
               <Link 
                 href="/tournaments" 
                 className={`cleanDrawerItem ${pathname === '/tournaments' ? 'active' : ''}`} 
@@ -323,7 +355,7 @@ export default function Header() {
                 <span className="cleanDrawerLabel">Tournaments (Tartamada)</span>
               </Link>
 
-              {/* 7. Server Status */}
+              {/* 9. Server Status */}
               <Link 
                 href="/status" 
                 className={`cleanDrawerItem ${pathname === '/status' ? 'active' : ''}`} 
@@ -333,7 +365,7 @@ export default function Header() {
                 <span className="cleanDrawerLabel">Live Server Status</span>
               </Link>
 
-              {/* 8. Code Checker */}
+              {/* 10. Code Checker */}
               <Link 
                 href="/redeem" 
                 className={`cleanDrawerItem ${pathname === '/redeem' ? 'active' : ''}`} 
@@ -343,7 +375,7 @@ export default function Header() {
                 <span className="cleanDrawerLabel">Code Checker</span>
               </Link>
 
-              {/* 9. FAQ */}
+              {/* 11. FAQ */}
               <Link 
                 href="/faq" 
                 className={`cleanDrawerItem ${pathname === '/faq' ? 'active' : ''}`} 
