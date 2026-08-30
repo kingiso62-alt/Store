@@ -256,15 +256,15 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 2. ALL GAMES SECTION HEADER (CLEAN & PROPORTIONATE) */}
+        {/* 2. POPULAR GAMES SECTION HEADER */}
         <div className="gameSectionHeaderRow">
           <div className="gameSectionTitleGroup">
-            <h2 className="gameSectionMainTitle">ALL GAMES</h2>
-            <span className="gameSectionBadge">PREMIUM SELECTION</span>
+            <h2 className="gameSectionMainTitle">POPULAR GAMES</h2>
+            <span className="gameSectionBadge">TOP-UP SELECTION</span>
           </div>
         </div>
 
-        {/* 3. ORDERED 12 ESPORTS GAME CARDS GRID (BIRIQ STYLE SQUIRCLE) */}
+        {/* 3. ORDERED 12 ESPORTS GAME CARDS GRID (3-BY-3 SQUIRCLE STYLE) */}
         <section className="esportsGameGrid biriqGridStyle">
           {games.map((g) => (
             <Link href={g.href} key={g.name} className="biriqGameCard">

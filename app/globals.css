@@ -3796,6 +3796,87 @@
 }
 
 /* -------------------------------------------------------------
+   POPULAR GAMES 3-BY-3 GRID (BIRIQ SQUIRCLE CARD STYLE)
+-------------------------------------------------------------- */
+.biriqGridStyle {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px 12px;
+  margin-bottom: 28px;
+}
+.biriqGameCard {
+  background: #ffffff;
+  border: 1.5px solid #edf2f7;
+  border-radius: 18px;
+  padding: 8px 8px 12px 8px;
+  box-shadow: 0 4px 16px rgba(10, 44, 97, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: all .2s ease;
+  position: relative;
+}
+.biriqGameCard:hover {
+  transform: translateY(-4px);
+  border-color: #0a2c61;
+  box-shadow: 0 10px 24px rgba(10, 44, 97, 0.12);
+}
+.biriqMediaWrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  background: #09152b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.biriqGameImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .25s ease;
+}
+.biriqGameCard:hover .biriqGameImg {
+  transform: scale(1.06);
+}
+.biriqFloatingPill {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  color: #0a2c61;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 2.5px 8px;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  white-space: nowrap;
+  z-index: 2;
+}
+.biriqZap {
+  color: #0a2c61;
+  flex-shrink: 0;
+}
+.biriqGameTitle {
+  font-size: 12px;
+  font-weight: 900;
+  color: #0a2c61;
+  text-align: center;
+  margin: 8px 0 0 0;
+  line-height: 1.25;
+  letter-spacing: -0.1px;
+}
+
+/* -------------------------------------------------------------
    RESPONSIVE 3-COLUMN TOP-UP PACKAGE GRID (DESKTOP & MOBILE)
 -------------------------------------------------------------- */
 .orderHeaderNavRow {
@@ -3945,6 +4026,28 @@
 
 /* MOBILE RESPONSIVENESS (EXACT 3-COLUMN COMPACT GRID) */
 @media(max-width: 900px) {
+  .biriqGridStyle {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px 8px !important;
+    margin-bottom: 20px;
+  }
+  .biriqGameCard {
+    padding: 6px 6px 10px 6px;
+    border-radius: 14px;
+  }
+  .biriqMediaWrap {
+    border-radius: 12px;
+  }
+  .biriqFloatingPill {
+    bottom: 4px;
+    font-size: 8px;
+    padding: 1.5px 6px;
+    border-radius: 14px;
+  }
+  .biriqGameTitle {
+    font-size: 11px;
+    margin-top: 5px;
+  }
   .orderHeaderNavRow {
     margin-bottom: 14px;
     gap: 8px;
