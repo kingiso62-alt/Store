@@ -1,13 +1,10 @@
 import { NextResponse } from 'next/server';
 import {beginIdempotent,completeIdempotent} from '../../../lib/server/idempotency';
-import { createClient } from '@supabase/supabase-js';
+import { supabaseAdmin } from '../../../lib/server/supabase-admin';
 import {rateLimit,clientKey} from '../../../lib/server/rate-limit';
 
 function admin(){
- return createClient(
-   process.env.NEXT_PUBLIC_SUPABASE_URL!,
-   process.env.SUPABASE_SERVICE_ROLE_KEY!
- );
+ return supabaseAdmin();
 }
 
 function orderNumber(){

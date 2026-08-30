@@ -1,4 +1,29 @@
-import {NextResponse} from 'next/server';import {createClient} from '@supabase/supabase-js';
-const db=()=>createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!,process.env.SUPABASE_SERVICE_ROLE_KEY!);
-export async function GET(){const {data,error}=await db().from('products').select('*,categories(name),brands(name)').order('created_at',{ascending:false});return error?NextResponse.json({error:error.message},{status:500}):NextResponse.json({products:data});}
-export async function POST(req:Request){try{const b=await req.json();const {data,error}=await db().from('products').insert({name:b.name,slug:b.slug,description:b.description||null,product_type:b.productType||'physical',price:Number(b.price),cost_price:Number(b.costPrice||0),compare_at_price:b.compareAtPrice?Number(b.compareAtPrice):null,is_active:true}).select().single();if(error)throw error;return NextResponse.json({product:data});}catch(e:any){return NextResponse.json({error:e.message},{status:500});}}
+import { NextResponse } from 'next/server';
+import { supabaseAdmin } from '../../../../lib/server/supabase-admin';
+
+const db = () => supabaseAdmin();
+
+export async function GET() {
+  const { data, error } = await db().from('products').select('*,categories(name),brands(name)').order('created_at', { ascending: false });
+  return error ? NextResponse.json({ error: error.message }, { status: 500 }) : NextResponse.json({ products: data });
+}
+
+export async function POST(req: Request) {
+  try {
+    const b = await req.json();
+    const { data, error } = await db().from('products').insert({
+      name: b.name,
+      slug: b.slug,
+      description: b.description || null,
+      product_type: b.productType || 'physical',
+      price: Number(b.price),
+      cost_price: Number(b.costPrice || 0),
+      compare_at_price: b.compareAtPrice ? Number(b.compareAtPrice) : null,
+      is_active: true
+    }).select().single();
+    if (error) throw error;
+    return NextResponse.json({ product: data });
+  } catch (e: any) {
+    return NextResponse.json({ error: e.message }, { status: 500 });
+  }
+}
