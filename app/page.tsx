@@ -130,29 +130,6 @@ const games = [
   }
 ];
 
-const packs = [
-  {
-    title: 'PUBG Mobile UC',
-    icon: '/images/games/pubg-mobile.png',
-    href: '/topup/order?game=pubg',
-    options: [
-      { name: '60 UC', tag: 'Instant' },
-      { name: '300 + 25 UC', tag: 'Popular' },
-      { name: '600 + 60 UC', tag: 'Best Seller' }
-    ]
-  },
-  {
-    title: 'eFootball Coins',
-    icon: '/images/games/efootball-android.png',
-    href: '/topup/order?game=efootball_android',
-    options: [
-      { name: '130 Coins', tag: 'Instant' },
-      { name: '550 Coins', tag: 'Popular' },
-      { name: '1040 Coins', tag: 'Top Choice' }
-    ]
-  }
-];
-
 export default function Home() {
   return (
     <>
@@ -307,41 +284,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 5. POPULAR QUICK PACKAGES */}
-        {/* 5. POPULAR QUICK PACKAGES (COMPACT & MODERN) */}
-        <div className="gameSectionHeaderRow" style={{ marginTop: '26px' }}>
-          <div className="gameSectionTitleGroup">
-            <h2 className="gameSectionMainTitle">POPULAR RECHARGES</h2>
-            <span className="gameSectionBadge" style={{ background: '#e11d48' }}>HOT DEALS</span>
-          </div>
-        </div>
-
-        <section className="featuredPacksGrid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
-          {packs.map((p) => (
-            <div key={p.title} className="featuredPackCard">
-              <div className="packHead">
-                <img src={p.icon} alt={p.title} className="packHeadImg" />
-                <div className="packHeadInfo">
-                  <h4 className="packHeadTitle">{p.title}</h4>
-                  <span className="packInstantBadge">⚡ Instant Delivery</span>
-                </div>
-              </div>
-              <div className="packOptionsList">
-                {p.options.map((opt) => (
-                  <div key={opt.name} className="packOptionItem">
-                    <span className="packOptionName">{opt.name}</span>
-                    <span className="packOptionTag">{opt.tag || 'Instant'}</span>
-                  </div>
-                ))}
-              </div>
-              <Link href={p.href} className="packCtaBtn">
-                Select &amp; Recharge
-              </Link>
-            </div>
-          ))}
-        </section>
-
-        {/* 6. PURE GAMING TOP-UP GUARANTEES */}
+        {/* 4. PURE GAMING TOP-UP GUARANTEES */}
         <section className="luxuryBenefitsStrip wrap">
           <div className="benefitCard">
             <div className="benefitIconWrap benefitIconDelivery">
