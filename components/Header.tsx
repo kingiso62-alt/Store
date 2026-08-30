@@ -150,10 +150,6 @@ export default function Header() {
               <Zap size={14} className="navItemIcon" />
               <span>Top-Up</span>
             </Link>
-            <Link href="/track-order" className={`unifiedNavLink ${pathname === '/track-order' ? 'active' : ''}`}>
-              <Truck size={14} className="navItemIcon" />
-              <span>Orders</span>
-            </Link>
             <Link href="/tournaments" className={`unifiedNavLink ${pathname === '/tournaments' ? 'active' : ''}`}>
               <Trophy size={14} className="navItemIcon" />
               <span>Tournaments</span>

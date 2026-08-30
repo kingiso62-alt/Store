@@ -10,6 +10,7 @@ import {
   Gift, Calendar, Award, Brain, Zap, Copy, Check, Flame, RefreshCw, LayoutDashboard, Settings, Tv, Users
 } from 'lucide-react';
 import { supabaseBrowser } from '../../lib/supabase-browser';
+import DownloadableReceiptModal from '../../components/features/DownloadableReceiptModal';
 
 interface UserProfile {
   id: string;
@@ -51,6 +52,7 @@ export default function AccountPage() {
   const [activeTab, setActiveTab] = useState<'overview' | 'orders' | 'mystery' | 'streak' | 'badges' | 'referral'>('overview');
   const [copiedRef, setCopiedRef] = useState(false);
   const [streakClaimed, setStreakClaimed] = useState(false);
+  const [selectedReceipt, setSelectedReceipt] = useState<any>(null);
 
   useEffect(() => {
     try {
@@ -481,8 +483,15 @@ export default function AccountPage() {
                           </div>
                         </div>
 
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                           <b style={{ fontSize: '14px', color: '#d91f2d' }}>${ord.amount.toFixed(2)}</b>
+                          <button
+                            type="button"
+                            onClick={() => setSelectedReceipt(ord)}
+                            style={{ background: '#f8fafc', border: '1px solid #cbd5e1', color: '#0a2c61', padding: '5px 8px', borderRadius: '6px', fontSize: '11px', fontWeight: 800, cursor: 'pointer' }}
+                          >
+                            🧾 Rasiid
+                          </button>
                           <Link
                             href={`/topup/order?game=${ord.game.toLowerCase().includes('pubg') ? 'pubg' : ord.game.toLowerCase().includes('free fire') ? 'freefire' : 'efootball_android'}`}
                             style={{ background: '#081d3d', color: '#ffffff', padding: '5px 10px', borderRadius: '6px', fontSize: '11px', fontWeight: 800, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
@@ -561,11 +570,18 @@ export default function AccountPage() {
                         </div>
                       </div>
 
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <span style={{ fontSize: '11px', fontWeight: 900, background: '#ecfdf5', color: '#16a34a', padding: '4px 8px', borderRadius: '6px' }}>
                           ✓ Completed
                         </span>
                         <b style={{ fontSize: '15px', color: '#d91f2d' }}>${ord.amount.toFixed(2)}</b>
+                        <button
+                          type="button"
+                          onClick={() => setSelectedReceipt(ord)}
+                          style={{ background: '#ffffff', border: '1.5px solid #cbd5e1', color: '#0a2c61', padding: '6px 12px', borderRadius: '8px', fontSize: '11.5px', fontWeight: 800, cursor: 'pointer' }}
+                        >
+                          🧾 Rasiid
+                        </button>
                         <Link
                           href={`/topup/order?game=${ord.game.toLowerCase().includes('pubg') ? 'pubg' : 'freefire'}`}
                           style={{ background: '#081d3d', color: '#ffffff', padding: '6px 12px', borderRadius: '8px', fontSize: '11.5px', fontWeight: 800, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
@@ -693,6 +709,23 @@ export default function AccountPage() {
 
           </div>
         </div>
+
+        {/* Downloadable Graphic Receipt Modal */}
+        {selectedReceipt && (
+          <DownloadableReceiptModal
+            isOpen={!!selectedReceipt}
+            onClose={() => setSelectedReceipt(null)}
+            orderData={{
+              orderId: selectedReceipt.id,
+              game: selectedReceipt.game,
+              packageName: selectedReceipt.package,
+              playerId: selectedReceipt.playerId,
+              amountUsd: selectedReceipt.amount,
+              paymentMethod: 'EVC Plus / Zaad (Somali Direct)',
+              date: selectedReceipt.date
+            }}
+          />
+        )}
       </main>
       <Footer />
     </>

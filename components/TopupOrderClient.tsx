@@ -8,6 +8,7 @@ import {
   Coins, Users, Tag, Gem, Gift, Flame, Trophy, PhoneCall, Printer
 } from 'lucide-react';
 import { addToCart } from '../lib/cart';
+import DownloadableReceiptModal from './features/DownloadableReceiptModal';
 
 interface GamePackage {
   name: string;
@@ -242,6 +243,7 @@ export default function TopupOrderClient() {
   const [isGift, setIsGift] = useState(false);
   const [giftRecipient, setGiftRecipient] = useState('');
   const [giftMessage, setGiftMessage] = useState('');
+  const [showGraphicReceipt, setShowGraphicReceipt] = useState(false);
 
   // Auto-load remembered Player ID
   useEffect(() => {
@@ -662,20 +664,36 @@ export default function TopupOrderClient() {
 
                 <button
                   type="button"
+                  onClick={() => setShowGraphicReceipt(true)}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'linear-gradient(135deg, #081d3d 0%, #151036 100%)', border: '1.5px solid #facc15', color: '#fef08a', padding: '8px 14px', borderRadius: '8px', fontSize: '12px', fontWeight: 900, cursor: 'pointer' }}
+                >
+                  <Sparkles size={14} color="#facc15" />
+                  <span>🧾 Rasiidka Sawirka ah (PNG)</span>
+                </button>
+
+                <button
+                  type="button"
                   onClick={() => window.print()}
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#ffffff', border: '1.5px solid #cbd5e1', color: '#0a2c61', padding: '8px 14px', borderRadius: '8px', fontSize: '12px', fontWeight: 800, cursor: 'pointer' }}
                 >
                   <Printer size={14} />
-                  <span>Daji Rasiidka (Print)</span>
+                  <span>Print</span>
                 </button>
-
-                <Link 
-                  href="/track-order"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#0a2c61', color: '#ffffff', padding: '8px 16px', borderRadius: '8px', fontSize: '12px', fontWeight: 800, textDecoration: 'none' }}
-                >
-                  <span>La Soco Dalabkaga →</span>
-                </Link>
               </div>
+
+              {/* Graphic Receipt Modal */}
+              <DownloadableReceiptModal
+                isOpen={showGraphicReceipt}
+                onClose={() => setShowGraphicReceipt(false)}
+                orderData={{
+                  orderId: orderSuccess.id,
+                  game: orderSuccess.game,
+                  packageName: orderSuccess.package,
+                  playerId: orderSuccess.playerId,
+                  amountUsd: Number(orderSuccess.amount),
+                  paymentMethod: 'EVC Plus / Zaad (Somali Direct)'
+                }}
+              />
             </div>
           )}
         </form>
