@@ -136,29 +136,19 @@ const packs = [
     icon: '/images/games/pubg-mobile.png',
     href: '/topup/order?game=pubg',
     options: [
-      { name: '60 UC', price: '$0.99' },
-      { name: '300 + 25 UC', price: '$4.99' },
-      { name: '600 + 60 UC', price: '$8.99' }
-    ]
-  },
-  {
-    title: 'Free Fire Diamonds',
-    icon: '/images/games/free-fire.png',
-    href: '/topup/order?game=freefire',
-    options: [
-      { name: '100 + 10 Diamonds', price: '$0.99' },
-      { name: '310 + 31 Diamonds', price: '$2.99' },
-      { name: '520 + 52 Diamonds', price: '$4.99' }
+      { name: '60 UC', tag: 'Instant' },
+      { name: '300 + 25 UC', tag: 'Popular' },
+      { name: '600 + 60 UC', tag: 'Best Seller' }
     ]
   },
   {
     title: 'eFootball Coins',
-    icon: '/images/games/efootball.png',
+    icon: '/images/games/efootball-android.png',
     href: '/topup/order?game=efootball_android',
     options: [
-      { name: '325 Coins', price: '$2.99' },
-      { name: '650 Coins', price: '$4.99' },
-      { name: '1,050 Coins', price: '$7.99' }
+      { name: '130 Coins', tag: 'Instant' },
+      { name: '550 Coins', tag: 'Popular' },
+      { name: '1040 Coins', tag: 'Top Choice' }
     ]
   }
 ];
@@ -326,7 +316,7 @@ export default function Home() {
           </div>
         </div>
 
-        <section className="featuredPacksGrid">
+        <section className="featuredPacksGrid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
           {packs.map((p) => (
             <div key={p.title} className="featuredPackCard">
               <div className="packHead">
@@ -340,7 +330,7 @@ export default function Home() {
                 {p.options.map((opt) => (
                   <div key={opt.name} className="packOptionItem">
                     <span className="packOptionName">{opt.name}</span>
-                    <span className="packOptionPrice">{opt.price}</span>
+                    <span className="packOptionTag">{opt.tag || 'Instant'}</span>
                   </div>
                 ))}
               </div>
