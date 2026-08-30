@@ -3795,6 +3795,214 @@
   }
 }
 
+/* -------------------------------------------------------------
+   RESPONSIVE 3-COLUMN TOP-UP PACKAGE GRID (DESKTOP & MOBILE)
+-------------------------------------------------------------- */
+.orderHeaderNavRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  gap: 10px;
+}
+.orderBreadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #64748b;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.backToAllGamesBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #081d3d;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: background .2s ease;
+}
+.backToAllGamesBtn:hover {
+  background: #d91f2d;
+}
+
+.topupOrderGridContainer {
+  display: grid;
+  grid-template-columns: 1fr 310px;
+  gap: 24px;
+  align-items: start;
+}
+.orderFormMainCard {
+  background: #ffffff;
+  border: 1.5px solid #edf2f7;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 6px 24px rgba(10, 44, 97, 0.03);
+}
+
+.gamePackagesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+}
+.gamePackageCard {
+  background: #ffffff;
+  border: 1.5px solid #edf2f7;
+  border-radius: 14px;
+  padding: 10px 8px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+  transition: all .15s ease;
+}
+.gamePackageCard:hover {
+  transform: translateY(-2px);
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(10, 44, 97, 0.06);
+}
+.gamePackageCard.selected {
+  background: #f0fdf4;
+  border-color: #10b981;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.18);
+}
+.pkgCardImageWrap {
+  width: 100%;
+  height: 95px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #09152b;
+  margin-bottom: 8px;
+  display: grid;
+  place-items: center;
+}
+.pkgCardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .2s ease;
+}
+.gamePackageCard:hover .pkgCardImage {
+  transform: scale(1.05);
+}
+.pkgCardTitle {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #0a2c61;
+  display: block;
+  height: 28px;
+  line-height: 1.25;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+.pkgCardBottom {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 6px;
+  border-top: 1px solid #f1f5f9;
+}
+.pkgCardPrice {
+  font-size: 12.5px;
+  font-weight: 900;
+  color: #16a34a;
+}
+.pkgCardBuyBtn {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-size: 9px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+}
+.pkgSelectedBadge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #10b981;
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* MOBILE RESPONSIVENESS (EXACT 3-COLUMN COMPACT GRID) */
+@media(max-width: 900px) {
+  .orderHeaderNavRow {
+    margin-bottom: 14px;
+    gap: 8px;
+  }
+  .orderBreadcrumbs {
+    font-size: 11px;
+  }
+  .backToAllGamesBtn {
+    padding: 6px 10px;
+    font-size: 11px;
+    border-radius: 6px;
+  }
+  .topupOrderGridContainer {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .orderFormMainCard {
+    padding: 14px 10px;
+    border-radius: 14px;
+  }
+  .gamePackagesGrid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+  }
+  .gamePackageCard {
+    padding: 6px 4px;
+    border-radius: 10px;
+  }
+  .pkgCardImageWrap {
+    height: 68px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+  }
+  .pkgCardTitle {
+    font-size: 10px;
+    height: 24px;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+  .pkgCardBottom {
+    padding-top: 3px;
+  }
+  .pkgCardPrice {
+    font-size: 11px;
+  }
+  .pkgCardBuyBtn {
+    font-size: 7.5px;
+    padding: 1px 4px;
+    border-radius: 4px;
+  }
+  .pkgSelectedBadge {
+    width: 15px;
+    height: 15px;
+    top: 3px;
+    right: 3px;
+  }
+}
+
 
 
 

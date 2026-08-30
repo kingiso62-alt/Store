@@ -311,29 +311,29 @@ export default function TopupOrderClient() {
     <div style={{ paddingTop: '20px', paddingBottom: '70px' }}>
       
       {/* 1. BREADCRUMB & BACK BUTTON */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '22px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#64748b' }}>
-          <Link href="/" style={{ color: '#0a2c61', textDecoration: 'none' }}>Home</Link>
+      <div className="orderHeaderNavRow">
+        <div className="orderBreadcrumbs">
+          <Link href="/">Home</Link>
           <span>/</span>
-          <Link href="/" style={{ color: '#0a2c61', textDecoration: 'none' }}>Top-Up</Link>
+          <Link href="/">Top-Up</Link>
           <span>/</span>
-          <b style={{ color: '#0a2c61' }}>{game.name}</b>
+          <b>{game.name}</b>
         </div>
 
         <Link 
           href="/" 
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#081d3d', color: '#ffffff', padding: '8px 16px', borderRadius: '8px', fontSize: '12px', fontWeight: 800, textDecoration: 'none' }}
+          className="backToAllGamesBtn"
         >
-          <ArrowLeft size={14} />
-          <span>Back to All Games</span>
+          <ArrowLeft size={13} />
+          <span>Back to Games</span>
         </Link>
       </div>
 
       {/* 2. ORDER CONTAINER GRID (MAIN CARD + GUARANTEE SIDEBAR) */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: '24px', alignItems: 'start' }}>
+      <div className="topupOrderGridContainer">
         
         {/* LEFT COLUMN: ORDER FORM */}
-        <form onSubmit={handleSubmit} style={{ background: '#ffffff', border: '1.5px solid #edf2f7', borderRadius: '18px', padding: '24px', boxShadow: '0 6px 24px rgba(10,44,97,0.03)' }}>
+        <form onSubmit={handleSubmit} className="orderFormMainCard">
           
           {/* Game Banner Header */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', paddingBottom: '20px', borderBottom: '1.5px solid #edf2f7', marginBottom: '22px' }}>
@@ -403,7 +403,7 @@ export default function TopupOrderClient() {
             </small>
           </div>
 
-          {/* Step 2: Select Recharge Package (WITH SECTIONS & GLOWING CARDS) */}
+          {/* Step 2: Select Recharge Package (WITH SECTIONS & 3-COLUMN GLOWING CARDS) */}
           <div style={{ marginBottom: '26px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '18px' }}>
               <span style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#0a2c61', color: '#ffffff', display: 'grid', placeItems: 'center', fontSize: '12px', fontWeight: 900 }}>
@@ -437,8 +437,8 @@ export default function TopupOrderClient() {
                     </div>
                   </div>
 
-                  {/* Section Packages Grid */}
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(135px, 1fr))', gap: '12px' }}>
+                  {/* Section Packages Grid (3 columns on mobile) */}
+                  <div className="gamePackagesGrid">
                     {secPackages.map((pkg) => {
                       const isSelected = selectedPackage.name === pkg.name;
 
@@ -447,49 +447,36 @@ export default function TopupOrderClient() {
                           key={pkg.name}
                           type="button"
                           onClick={() => setSelectedPackage(pkg)}
-                          style={{
-                            background: isSelected ? '#f0fdf4' : '#ffffff',
-                            border: `1.5px solid ${isSelected ? '#10b981' : '#edf2f7'}`,
-                            borderRadius: '16px',
-                            padding: '10px',
-                            textAlign: 'left',
-                            cursor: 'pointer',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'space-between',
-                            position: 'relative',
-                            boxShadow: isSelected ? '0 4px 14px rgba(16,185,129,0.18)' : '0 2px 6px rgba(0,0,0,0.02)',
-                            transition: 'all .15s ease'
-                          }}
+                          className={`gamePackageCard ${isSelected ? 'selected' : ''}`}
                         >
                           {/* Image Container */}
-                          <div style={{ width: '100%', height: '110px', borderRadius: '12px', overflow: 'hidden', background: '#09152b', marginBottom: '8px', display: 'grid', placeItems: 'center' }}>
+                          <div className="pkgCardImageWrap">
                             <img 
                               src={pkg.img} 
                               alt={pkg.name} 
-                              style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                              className="pkgCardImage"
                             />
                           </div>
 
                           {/* Title */}
-                          <span style={{ fontSize: '12px', fontWeight: 800, color: '#0a2c61', display: 'block', height: '28px', lineHeight: '1.25', overflow: 'hidden', marginBottom: '4px' }}>
+                          <span className="pkgCardTitle">
                             {pkg.name}
                           </span>
 
                           {/* Price & Green BUY / BUY NOW Pill */}
-                          <div style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '4px' }}>
-                            <b style={{ fontSize: '13px', fontWeight: 900, color: '#16a34a' }}>
+                          <div className="pkgCardBottom">
+                            <b className="pkgCardPrice">
                               ${pkg.price.toFixed(2)}
                             </b>
-                            <span style={{ background: '#ecfdf5', color: '#059669', border: '1px solid #a7f3d0', padding: '2px 8px', borderRadius: '12px', fontSize: '9.5px', fontWeight: 900, textTransform: 'uppercase' }}>
+                            <span className="pkgCardBuyBtn">
                               {pkg.btnText || 'BUY'}
                             </span>
                           </div>
 
                           {/* Selected Checkmark Badge */}
                           {isSelected && (
-                            <div style={{ position: 'absolute', top: '6px', right: '6px', width: '20px', height: '20px', borderRadius: '50%', background: '#10b981', color: '#ffffff', display: 'grid', placeItems: 'center', boxShadow: '0 2px 5px rgba(0,0,0,0.2)' }}>
-                              <Check size={12} strokeWidth={3} />
+                            <div className="pkgSelectedBadge">
+                              <Check size={11} strokeWidth={3} />
                             </div>
                           )}
                         </button>
