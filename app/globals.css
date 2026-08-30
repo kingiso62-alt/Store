@@ -4106,6 +4106,40 @@
   }
 }
 
+/* -------------------------------------------------------------
+   CYBERPUNK ESPORTS DARK THEME
+-------------------------------------------------------------- */
+html.dark-theme body {
+  background: #060d1a !important;
+  color: #e2e8f0 !important;
+}
+
+html.dark-theme .tokiyoHeader {
+  background: #081224 !important;
+  border-bottom: 1px solid #1e293b !important;
+}
+
+html.dark-theme .biriqGameCard,
+html.dark-theme .benefitCard,
+html.dark-theme .stepCard {
+  background: #0d1b33 !important;
+  border-color: #1e3a8a !important;
+  color: #ffffff !important;
+}
+
+html.dark-theme .biriqGameTitle {
+  color: #f1f5f9 !important;
+}
+
+html.dark-theme input,
+html.dark-theme select,
+html.dark-theme textarea {
+  background: #0f1f3d !important;
+  color: #ffffff !important;
+  border-color: #1e3a8a !important;
+}
+
+
 
 
 

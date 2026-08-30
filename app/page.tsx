@@ -7,6 +7,7 @@ import FlashSaleBanner from '../components/features/FlashSaleBanner';
 import CustomerReviewsSection from '../components/features/CustomerReviewsSection';
 import VipLoyaltySection from '../components/features/VipLoyaltySection';
 import SecurityNoticeSection from '../components/features/SecurityNoticeSection';
+import PriceGuaranteeBadge from '../components/features/PriceGuaranteeBadge';
 import { 
   Zap, ShieldCheck, Sparkles, ArrowRight, 
   PhoneCall, CreditCard, Trophy, Gamepad2, Flame
@@ -258,9 +259,12 @@ export default function Home() {
 
         {/* 2. POPULAR GAMES SECTION HEADER WITH CATEGORY FILTER PILLS */}
         <div className="gameSectionHeaderRow" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '14px' }}>
-          <div className="gameSectionTitleGroup">
-            <h2 className="gameSectionMainTitle">POPULAR GAMES</h2>
-            <span className="gameSectionBadge">TOP-UP SELECTION</span>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', flexWrap: 'wrap', gap: '8px' }}>
+            <div className="gameSectionTitleGroup">
+              <h2 className="gameSectionMainTitle">POPULAR GAMES</h2>
+              <span className="gameSectionBadge">TOP-UP SELECTION</span>
+            </div>
+            <PriceGuaranteeBadge />
           </div>
 
           {/* Interactive Category Filter Pills */}
