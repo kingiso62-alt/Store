@@ -1,5 +1,8 @@
 import CartSnapshotSync from '../components/account/CartSnapshotSync';
 import MobileBottomNav from '../components/MobileBottomNav';
+import LuckySpinModal from '../components/features/LuckySpinModal';
+import LivePurchaseNotifier from '../components/features/LivePurchaseNotifier';
+import SmartWhatsAppWidget from '../components/features/SmartWhatsAppWidget';
 import './globals.css';
 
 export const viewport = {
@@ -35,6 +38,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <CartSnapshotSync />
         {children}
+        <LuckySpinModal />
+        <LivePurchaseNotifier />
+        <SmartWhatsAppWidget />
         <MobileBottomNav />
       </body>
     </html>

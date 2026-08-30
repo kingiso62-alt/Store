@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { 
   ArrowLeft, Zap, ShieldCheck, CheckCircle2, 
   ShoppingCart, Sparkles, HelpCircle, Check, 
-  Coins, Users, Tag, Gem, Gift, Flame, Trophy, PhoneCall
+  Coins, Users, Tag, Gem, Gift, Flame, Trophy, PhoneCall, Printer
 } from 'lucide-react';
 import { addToCart } from '../lib/cart';
 
@@ -244,6 +244,14 @@ export default function TopupOrderClient() {
     if (game.packages && game.packages.length > 0) {
       setSelectedPackage(game.packages[0]);
     }
+    try {
+      const saved = localStorage.getItem(`tokiyo_saved_id_${gameKey}`);
+      if (saved) {
+        setPlayerIdInput(saved);
+      }
+    } catch {
+      // ignore
+    }
   }, [gameKey]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -251,6 +259,12 @@ export default function TopupOrderClient() {
     if (!playerIdInput.trim()) return;
 
     setIsOrdering(true);
+
+    try {
+      localStorage.setItem(`tokiyo_saved_id_${gameKey}`, playerIdInput.trim());
+    } catch {
+      // ignore
+    }
 
     const newOrderNumber = `TK-${Math.floor(100000 + Math.random() * 900000)}`;
     const newOrder = {
@@ -569,6 +583,15 @@ export default function TopupOrderClient() {
                   <PhoneCall size={14} />
                   <span>Xaqiiji WhatsApp (1-Click)</span>
                 </a>
+
+                <button
+                  type="button"
+                  onClick={() => window.print()}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#ffffff', border: '1.5px solid #cbd5e1', color: '#0a2c61', padding: '8px 14px', borderRadius: '8px', fontSize: '12px', fontWeight: 800, cursor: 'pointer' }}
+                >
+                  <Printer size={14} />
+                  <span>Daji Rasiidka (Print)</span>
+                </button>
 
                 <Link 
                   href="/track-order"
