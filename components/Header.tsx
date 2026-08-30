@@ -7,26 +7,21 @@ import {
   Truck, Download, Menu, X, Home, ShoppingBag, 
   KeyRound, Wallet, Award, Info, 
   HelpCircle, PhoneCall, Heart, ShoppingCart, Search, Trophy,
-  Users, Activity, Calculator, Brain, Gift, Flame, Calendar, Tv
+  Users, Activity, Calculator, Gift, Flame
 } from 'lucide-react';
 import { supabaseBrowser } from '../lib/supabase-browser';
 import QuickSearchModal from './features/QuickSearchModal';
 import CurrencyConverterModal from './features/CurrencyConverterModal';
-import DailyGamingQuizModal from './features/DailyGamingQuizModal';
-import GamerBadgesModal from './features/GamerBadgesModal';
-import DailyLoginStreakModal from './features/DailyLoginStreakModal';
+import RewardsHubModal from './features/RewardsHubModal';
 import ThemeToggle from './features/ThemeToggle';
 
 export default function Header() {
   const pathname = usePathname();
   const [unreadNotifications, setUnreadNotifications] = useState(0);
-  const [cartCount, setCartCount] = useState(2);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [currencyOpen, setCurrencyOpen] = useState(false);
-  const [quizOpen, setQuizOpen] = useState(false);
-  const [badgesOpen, setBadgesOpen] = useState(false);
-  const [streakOpen, setStreakOpen] = useState(false);
+  const [rewardsOpen, setRewardsOpen] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
 
   useEffect(() => {
@@ -80,7 +75,7 @@ export default function Header() {
 
   return (
     <header className="tokiyoHeader">
-      {/* 1. TOP UTILITY ANNOUNCEMENT BAR */}
+      {/* 1. TOP UTILITY ANNOUNCEMENT BAR (CLEAN & SPACIOUS) */}
       <div className="headerTopBar">
         <div className="headerTopInner wrap">
           <div className="topAnnouncement">
@@ -94,31 +89,26 @@ export default function Header() {
             </a>
           </div>
 
-          <div className="topUtilityLinks">
-            <Link
-              href="/mystery-box"
-              style={{ background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)', color: '#ffffff', borderRadius: '4px', padding: '2px 8px', fontSize: '10.5px', fontWeight: 900, display: 'inline-flex', alignItems: 'center', gap: '4px', textDecoration: 'none' }}
-            >
-              <Gift size={12} />
-              <span>Mystery Box 🎁</span>
-            </Link>
-
+          <div className="topUtilityLinks" style={{ gap: '12px' }}>
             <button
               type="button"
-              onClick={() => setStreakOpen(true)}
-              style={{ background: 'rgba(34, 197, 94, 0.15)', border: '1px solid #22c55e', color: '#86efac', borderRadius: '4px', padding: '2px 7px', cursor: 'pointer', fontSize: '10.5px', fontWeight: 900, display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+              onClick={() => setRewardsOpen(true)}
+              style={{
+                background: 'linear-gradient(135deg, rgba(234,179,8,0.2) 0%, rgba(245,158,11,0.2) 100%)',
+                border: '1px solid #eab308',
+                color: '#fef08a',
+                borderRadius: '6px',
+                padding: '3px 10px',
+                cursor: 'pointer',
+                fontSize: '11px',
+                fontWeight: 900,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '5px'
+              }}
             >
-              <Calendar size={12} />
-              <span>Streak 🔥</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setBadgesOpen(true)}
-              style={{ background: 'transparent', border: 0, color: '#fef08a', cursor: 'pointer', fontSize: '11px', fontWeight: 800, display: 'inline-flex', alignItems: 'center', gap: '4px' }}
-            >
-              <Award size={13} />
-              <span>Badges 🎖️</span>
+              <Gift size={13} color="#facc15" />
+              <span>Rewards Hub 🎁</span>
             </button>
 
             <button
@@ -127,16 +117,7 @@ export default function Header() {
               style={{ background: 'transparent', border: 0, color: '#93c5fd', cursor: 'pointer', fontSize: '11px', fontWeight: 800, display: 'inline-flex', alignItems: 'center', gap: '4px' }}
             >
               <Calculator size={13} />
-              <span>USD ⇄ SOS</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setQuizOpen(true)}
-              style={{ background: 'rgba(234, 179, 8, 0.15)', border: '1px solid #eab308', color: '#fef08a', borderRadius: '4px', padding: '2px 7px', cursor: 'pointer', fontSize: '10.5px', fontWeight: 900, display: 'inline-flex', alignItems: 'center', gap: '4px' }}
-            >
-              <Brain size={12} />
-              <span>Quiz</span>
+              <span>🇸🇴 USD ⇄ SOS</span>
             </button>
 
             {deferredPrompt && (
@@ -151,7 +132,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* 2. UNIFIED MAIN NAVIGATION BAR */}
+      {/* 2. UNIFIED MAIN NAVIGATION BAR (UNCLUTTERED & BEAUTIFUL) */}
       <div className="unifiedEsportsHeaderBar">
         <div className="unifiedHeaderInner wrap">
           {/* Logo Section */}
@@ -163,48 +144,40 @@ export default function Header() {
             />
           </Link>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Navigation Links (Only Core Essential Tabs) */}
           <nav className="unifiedNavLinks">
             <Link href="/" className={`unifiedNavLink ${pathname === '/' ? 'active' : ''}`}>
-              <Zap size={15} className="navItemIcon" />
+              <Zap size={14} className="navItemIcon" />
               <span>Top-Up</span>
             </Link>
-            <Link href="/bulk-topup" className={`unifiedNavLink ${pathname === '/bulk-topup' ? 'active' : ''}`}>
-              <Users size={15} className="navItemIcon" />
-              <span>Bulk Clan</span>
-            </Link>
-            <Link href="/vouchers" className={`unifiedNavLink ${pathname === '/vouchers' ? 'active' : ''}`}>
-              <Gift size={15} className="navItemIcon" />
-              <span>Gift Cards</span>
-            </Link>
-            <Link href="/streams" className={`unifiedNavLink ${pathname === '/streams' ? 'active' : ''}`}>
-              <Tv size={15} className="navItemIcon" />
-              <span>Streams</span>
-            </Link>
             <Link href="/track-order" className={`unifiedNavLink ${pathname === '/track-order' ? 'active' : ''}`}>
-              <Truck size={15} className="navItemIcon" />
+              <Truck size={14} className="navItemIcon" />
               <span>Orders</span>
             </Link>
-            <Link href="/referral" className={`unifiedNavLink ${pathname === '/referral' ? 'active' : ''}`}>
-              <Users size={15} className="navItemIcon" />
-              <span>Refer $1</span>
-            </Link>
             <Link href="/tournaments" className={`unifiedNavLink ${pathname === '/tournaments' ? 'active' : ''}`}>
-              <Trophy size={15} className="navItemIcon" />
+              <Trophy size={14} className="navItemIcon" />
               <span>Tournaments</span>
             </Link>
+            <Link href="/vouchers" className={`unifiedNavLink ${pathname === '/vouchers' ? 'active' : ''}`}>
+              <Gift size={14} className="navItemIcon" />
+              <span>Gift Cards</span>
+            </Link>
+            <Link href="/referral" className={`unifiedNavLink ${pathname === '/referral' ? 'active' : ''}`}>
+              <Users size={14} className="navItemIcon" />
+              <span>Refer $1</span>
+            </Link>
             <Link href="/status" className={`unifiedNavLink ${pathname === '/status' ? 'active' : ''}`}>
-              <Activity size={15} className="navItemIcon" />
+              <Activity size={14} className="navItemIcon" />
               <span>Servers</span>
             </Link>
             <Link href="/faq" className={`unifiedNavLink ${pathname === '/faq' ? 'active' : ''}`}>
-              <HelpCircle size={15} className="navItemIcon" />
+              <HelpCircle size={14} className="navItemIcon" />
               <span>FAQ</span>
             </Link>
           </nav>
 
           {/* Action Icons (Desktop & Mobile) */}
-          <div className="unifiedActionGroup">
+          <div className="unifiedActionGroup" style={{ gap: '10px' }}>
             {/* Quick Search Button */}
             <button
               type="button"
@@ -212,20 +185,30 @@ export default function Header() {
               className="unifiedHeaderIconBtn"
               aria-label="Search games"
               title="Search (Ctrl + K)"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', cursor: 'pointer', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '8px', padding: '6px 12px', color: '#ffffff', fontSize: '11px', fontWeight: 800 }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                cursor: 'pointer',
+                background: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(255,255,255,0.18)',
+                borderRadius: '10px',
+                padding: '6px 14px',
+                color: '#ffffff',
+                fontSize: '11.5px',
+                fontWeight: 800,
+                width: 'auto',
+                height: '34px'
+              }}
             >
-              <Search size={15} color="#93c5fd" />
+              <Search size={14} color="#93c5fd" />
               <span className="hideOnMobile">Search (Ctrl+K)</span>
             </button>
 
             {/* Desktop Action Icons */}
-            <div className="desktopActionIcons">
-              <Link href="/track-order" className="unifiedHeaderIconBtn" aria-label="Orders" title="Orders">
-                <ShoppingBag size={18} />
-              </Link>
-
+            <div className="desktopActionIcons" style={{ display: 'flex', gap: '8px' }}>
               <Link href="/account" className="unifiedHeaderIconBtn" aria-label="My Account" title="Account">
-                <UserRound size={18} />
+                <UserRound size={17} />
               </Link>
             </div>
 
@@ -235,7 +218,7 @@ export default function Header() {
               className="unifiedHeaderIconBtn mobileNotifBtn" 
               aria-label="Notifications"
             >
-              <Bell size={18} />
+              <Bell size={17} />
               {unreadNotifications > 0 && <span className="notifBadgeDot"></span>}
             </Link>
 
@@ -282,7 +265,7 @@ export default function Header() {
                 onClick={() => setMobileNavOpen(false)}
               >
                 <Home size={19} className="cleanDrawerIcon" />
-                <span className="cleanDrawerLabel">Home</span>
+                <span className="cleanDrawerLabel">Home (Top-Up)</span>
               </Link>
 
               {/* 2. Mystery Box */}
@@ -295,17 +278,7 @@ export default function Header() {
                 <span className="cleanDrawerLabel">Lucky Mystery Box 🎁</span>
               </Link>
 
-              {/* 3. Bulk Top-Up */}
-              <Link 
-                href="/bulk-topup" 
-                className={`cleanDrawerItem ${pathname === '/bulk-topup' ? 'active' : ''}`} 
-                onClick={() => setMobileNavOpen(false)}
-              >
-                <Users size={19} className="cleanDrawerIcon" />
-                <span className="cleanDrawerLabel">Clan &amp; Squad Bulk Top-Up</span>
-              </Link>
-
-              {/* 4. Gift Cards */}
+              {/* 3. Gift Cards */}
               <Link 
                 href="/vouchers" 
                 className={`cleanDrawerItem ${pathname === '/vouchers' ? 'active' : ''}`} 
@@ -315,27 +288,17 @@ export default function Header() {
                 <span className="cleanDrawerLabel">Digital Gift Cards &amp; Vouchers</span>
               </Link>
 
-              {/* 5. Live Streams */}
-              <Link 
-                href="/streams" 
-                className={`cleanDrawerItem ${pathname === '/streams' ? 'active' : ''}`} 
-                onClick={() => setMobileNavOpen(false)}
-              >
-                <Tv size={19} className="cleanDrawerIcon" />
-                <span className="cleanDrawerLabel">Somali Esports Streams 📺</span>
-              </Link>
-
-              {/* 6. Orders */}
+              {/* 4. Orders */}
               <Link 
                 href="/track-order" 
                 className={`cleanDrawerItem ${pathname === '/track-order' ? 'active' : ''}`} 
                 onClick={() => setMobileNavOpen(false)}
               >
                 <ShoppingBag size={19} className="cleanDrawerIcon" />
-                <span className="cleanDrawerLabel">Orders</span>
+                <span className="cleanDrawerLabel">Orders (La Soco Dalabka)</span>
               </Link>
 
-              {/* 7. Refer $1.00 */}
+              {/* 5. Refer $1.00 */}
               <Link 
                 href="/referral" 
                 className={`cleanDrawerItem ${pathname === '/referral' ? 'active' : ''}`} 
@@ -345,7 +308,7 @@ export default function Header() {
                 <span className="cleanDrawerLabel">Refer a Friend ($0.50 Bonus)</span>
               </Link>
 
-              {/* 8. Tournaments */}
+              {/* 6. Tournaments */}
               <Link 
                 href="/tournaments" 
                 className={`cleanDrawerItem ${pathname === '/tournaments' ? 'active' : ''}`} 
@@ -355,7 +318,7 @@ export default function Header() {
                 <span className="cleanDrawerLabel">Tournaments (Tartamada)</span>
               </Link>
 
-              {/* 9. Server Status */}
+              {/* 7. Server Status */}
               <Link 
                 href="/status" 
                 className={`cleanDrawerItem ${pathname === '/status' ? 'active' : ''}`} 
@@ -365,7 +328,7 @@ export default function Header() {
                 <span className="cleanDrawerLabel">Live Server Status</span>
               </Link>
 
-              {/* 10. Code Checker */}
+              {/* 8. Code Checker */}
               <Link 
                 href="/redeem" 
                 className={`cleanDrawerItem ${pathname === '/redeem' ? 'active' : ''}`} 
@@ -375,14 +338,14 @@ export default function Header() {
                 <span className="cleanDrawerLabel">Code Checker</span>
               </Link>
 
-              {/* 11. FAQ */}
+              {/* 9. FAQ */}
               <Link 
                 href="/faq" 
                 className={`cleanDrawerItem ${pathname === '/faq' ? 'active' : ''}`} 
                 onClick={() => setMobileNavOpen(false)}
               >
                 <HelpCircle size={19} className="cleanDrawerIcon" />
-                <span className="cleanDrawerLabel">FAQ</span>
+                <span className="cleanDrawerLabel">FAQ (Su'aalaha)</span>
               </Link>
             </div>
 
@@ -402,12 +365,10 @@ export default function Header() {
         </>
       )}
 
-      {/* Modals */}
+      {/* Consolidated Modals */}
       <QuickSearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
       <CurrencyConverterModal isOpen={currencyOpen} onClose={() => setCurrencyOpen(false)} />
-      <DailyGamingQuizModal isOpen={quizOpen} onClose={() => setQuizOpen(false)} />
-      <GamerBadgesModal isOpen={badgesOpen} onClose={() => setBadgesOpen(false)} />
-      <DailyLoginStreakModal isOpen={streakOpen} onClose={() => setStreakOpen(false)} />
+      <RewardsHubModal isOpen={rewardsOpen} onClose={() => setRewardsOpen(false)} />
     </header>
   );
 }
