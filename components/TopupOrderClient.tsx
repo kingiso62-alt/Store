@@ -239,7 +239,11 @@ export default function TopupOrderClient() {
   const [zoneIdInput, setZoneIdInput] = useState('');
   const [isOrdering, setIsOrdering] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState<any>(null);
+  const [isGift, setIsGift] = useState(false);
+  const [giftRecipient, setGiftRecipient] = useState('');
+  const [giftMessage, setGiftMessage] = useState('');
 
+  // Auto-load remembered Player ID
   useEffect(() => {
     if (game.packages && game.packages.length > 0) {
       setSelectedPackage(game.packages[0]);
@@ -260,6 +264,7 @@ export default function TopupOrderClient() {
 
     setIsOrdering(true);
 
+    // Save ID for next time
     try {
       localStorage.setItem(`tokiyo_saved_id_${gameKey}`, playerIdInput.trim());
     } catch {
@@ -277,7 +282,10 @@ export default function TopupOrderClient() {
       status: 'completed',
       date: new Date().toISOString().replace('T', ' ').slice(0, 16),
       paymentMethod: 'EVC Plus (*770#)',
-      reference: `EVC-${Math.floor(1000000 + Math.random() * 9000000)}`
+      reference: `EVC-${Math.floor(1000000 + Math.random() * 9000000)}`,
+      isGift,
+      giftRecipient,
+      giftMessage
     };
 
     // Save to user local orders
@@ -437,6 +445,39 @@ export default function TopupOrderClient() {
               <HelpCircle size={12} />
               To find your ID, open the game profile screen and copy your numeric Character ID.
             </small>
+
+            {/* Gift a Friend Toggle */}
+            <div style={{ marginTop: '14px', background: isGift ? '#fefce8' : '#f8fafc', border: `1.5px solid ${isGift ? '#facc15' : '#edf2f7'}`, borderRadius: '12px', padding: '12px 14px', transition: 'all .2s' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '12.5px', fontWeight: 800, color: '#0a2c61' }}>
+                <input
+                  type="checkbox"
+                  checked={isGift}
+                  onChange={(e) => setIsGift(e.target.checked)}
+                  style={{ accentColor: '#eab308', width: '16px', height: '16px', cursor: 'pointer' }}
+                />
+                <Gift size={16} color="#eab308" />
+                <span>🎁 U Hadyee Saaxiibkaa (Surprise Gift to a Friend)</span>
+              </label>
+
+              {isGift && (
+                <div style={{ marginTop: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <input
+                    type="text"
+                    placeholder="Magaca Saaxiibkaa (tusaale: Khaalid Gamer)"
+                    value={giftRecipient}
+                    onChange={(e) => setGiftRecipient(e.target.value)}
+                    style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1.5px solid #cbd5e1', fontSize: '12px', outline: 'none' }}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Fariin Hambalyo ah (tusaale: Hambalyo dhalasho wacan walaal!)"
+                    value={giftMessage}
+                    onChange={(e) => setGiftMessage(e.target.value)}
+                    style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1.5px solid #cbd5e1', fontSize: '12px', outline: 'none' }}
+                  />
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Step 2: Select Recharge Package (WITH SECTIONS & 3-COLUMN GLOWING CARDS) */}
@@ -571,6 +612,19 @@ export default function TopupOrderClient() {
                   <span style={{ color: '#64748b' }}>Qiimaha:</span>
                   <b style={{ color: '#d91f2d' }}>${Number(orderSuccess.amount).toFixed(2)}</b>
                 </div>
+                {orderSuccess.isGift && (
+                  <div style={{ marginTop: '8px', paddingTop: '8px', borderTop: '1px dashed #bbf7d0', background: '#fefce8', padding: '6px 8px', borderRadius: '6px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#854d0e', fontWeight: 800, fontSize: '11px' }}>
+                      <Gift size={13} />
+                      <span>Hadiyad loo diray: <b>{orderSuccess.giftRecipient || 'Saaxiib'}</b></span>
+                    </div>
+                    {orderSuccess.giftMessage && (
+                      <p style={{ margin: '2px 0 0', fontSize: '11px', color: '#713f12', fontStyle: 'italic' }}>
+                        "{orderSuccess.giftMessage}"
+                      </p>
+                    )}
+                  </div>
+                )}
               </div>
 
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>

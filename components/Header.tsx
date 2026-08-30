@@ -6,10 +6,13 @@ import {
   UserRound, Zap, Bell, Sparkles, 
   Truck, Download, Menu, X, Home, ShoppingBag, 
   KeyRound, Wallet, Award, Info, 
-  HelpCircle, PhoneCall, Heart, ShoppingCart, Search, Trophy
+  HelpCircle, PhoneCall, Heart, ShoppingCart, Search, Trophy,
+  Users, Activity, Calculator, Brain
 } from 'lucide-react';
 import { supabaseBrowser } from '../lib/supabase-browser';
 import QuickSearchModal from './features/QuickSearchModal';
+import CurrencyConverterModal from './features/CurrencyConverterModal';
+import DailyGamingQuizModal from './features/DailyGamingQuizModal';
 
 export default function Header() {
   const pathname = usePathname();
@@ -17,6 +20,8 @@ export default function Header() {
   const [cartCount, setCartCount] = useState(2);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [currencyOpen, setCurrencyOpen] = useState(false);
+  const [quizOpen, setQuizOpen] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
 
   useEffect(() => {
@@ -63,12 +68,14 @@ export default function Header() {
       if (outcome === 'accepted') {
         setDeferredPrompt(null);
       }
+    } else {
+      window.location.href = '/pwa/install';
     }
   };
 
   return (
     <header className="tokiyoHeader">
-      {/* 1. TOP ANNOUNCEMENT & UTILITY BAR (Desktop) */}
+      {/* 1. TOP UTILITY ANNOUNCEMENT BAR */}
       <div className="headerTopBar">
         <div className="headerTopInner wrap">
           <div className="topAnnouncement">
@@ -78,16 +85,33 @@ export default function Header() {
             </span>
             <span style={{ opacity: 0.4 }}>•</span>
             <a href="https://wa.me/252613667676" target="_blank" rel="noopener noreferrer" className="topBarLink">
-              WhatsApp Support: +252 61 366 7676
+              WhatsApp: +252 61 366 7676
             </a>
           </div>
 
           <div className="topUtilityLinks">
-            <span className="topCurrency">🇸🇴 USD ($) Somali Shilling</span>
+            <button
+              type="button"
+              onClick={() => setCurrencyOpen(true)}
+              style={{ background: 'transparent', border: 0, color: '#93c5fd', cursor: 'pointer', fontSize: '11px', fontWeight: 800, display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+            >
+              <Calculator size={13} />
+              <span>🇸🇴 USD ⇄ SOS ⇄ Zaad</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setQuizOpen(true)}
+              style={{ background: 'rgba(234, 179, 8, 0.15)', border: '1px solid #eab308', color: '#fef08a', borderRadius: '4px', padding: '2px 7px', cursor: 'pointer', fontSize: '10.5px', fontWeight: 900, display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+            >
+              <Brain size={12} />
+              <span>Gaming Quiz</span>
+            </button>
+
             {deferredPrompt && (
               <button onClick={handleInstallClick} className="topPwaBtn">
                 <Download size={12} />
-                <span>Install Tokiyo App</span>
+                <span>Install App</span>
               </button>
             )}
           </div>
@@ -116,25 +140,25 @@ export default function Header() {
               <Truck size={15} className="navItemIcon" />
               <span>Orders</span>
             </Link>
-            <Link href="/redeem" className={`unifiedNavLink ${pathname === '/redeem' ? 'active' : ''}`}>
-              <KeyRound size={15} className="navItemIcon" />
-              <span>Code Checker</span>
+            <Link href="/referral" className={`unifiedNavLink ${pathname === '/referral' ? 'active' : ''}`}>
+              <Users size={15} className="navItemIcon" />
+              <span>Refer $1</span>
             </Link>
             <Link href="/cashback" className={`unifiedNavLink ${pathname === '/cashback' ? 'active' : ''}`}>
               <Wallet size={15} className="navItemIcon" />
               <span>Cashback</span>
             </Link>
-            <Link href="/leaderboard" className={`unifiedNavLink ${pathname === '/leaderboard' ? 'active' : ''}`}>
-              <Award size={15} className="navItemIcon" />
-              <span>Leaderboard</span>
-            </Link>
             <Link href="/tournaments" className={`unifiedNavLink ${pathname === '/tournaments' ? 'active' : ''}`}>
               <Trophy size={15} className="navItemIcon" />
               <span>Tournaments</span>
             </Link>
-            <Link href="/terms" className={`unifiedNavLink ${pathname === '/terms' ? 'active' : ''}`}>
-              <Info size={15} className="navItemIcon" />
-              <span>Shuruudaha</span>
+            <Link href="/leaderboard" className={`unifiedNavLink ${pathname === '/leaderboard' ? 'active' : ''}`}>
+              <Award size={15} className="navItemIcon" />
+              <span>Leaderboard</span>
+            </Link>
+            <Link href="/status" className={`unifiedNavLink ${pathname === '/status' ? 'active' : ''}`}>
+              <Activity size={15} className="navItemIcon" />
+              <span>Servers</span>
             </Link>
             <Link href="/faq" className={`unifiedNavLink ${pathname === '/faq' ? 'active' : ''}`}>
               <HelpCircle size={15} className="navItemIcon" />
@@ -144,7 +168,7 @@ export default function Header() {
 
           {/* Action Icons (Desktop & Mobile) */}
           <div className="unifiedActionGroup">
-            {/* Quick Search Button (Desktop & Mobile) */}
+            {/* Quick Search Button */}
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
@@ -168,7 +192,7 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* Notification Bell (Always Visible) */}
+            {/* Notification Bell */}
             <Link 
               href="/account#notifications" 
               className="unifiedHeaderIconBtn mobileNotifBtn" 
@@ -200,7 +224,7 @@ export default function Header() {
             aria-hidden="true"
           />
           <div className="cleanBiriqDrawer">
-            {/* Drawer Top Header (Menu + Close X) */}
+            {/* Drawer Top Header */}
             <div className="cleanDrawerHeader">
               <h3 className="cleanDrawerTitle">Menu</h3>
               <button 
@@ -212,7 +236,7 @@ export default function Header() {
               </button>
             </div>
 
-            {/* Exact Navigation Items */}
+            {/* Drawer Menu List */}
             <div className="cleanDrawerMenuList">
               {/* 1. Home */}
               <Link 
@@ -234,14 +258,14 @@ export default function Header() {
                 <span className="cleanDrawerLabel">Orders</span>
               </Link>
 
-              {/* 3. Code Checker */}
+              {/* 3. Refer $1.00 */}
               <Link 
-                href="/redeem" 
-                className={`cleanDrawerItem ${pathname === '/redeem' ? 'active' : ''}`} 
+                href="/referral" 
+                className={`cleanDrawerItem ${pathname === '/referral' ? 'active' : ''}`} 
                 onClick={() => setMobileNavOpen(false)}
               >
-                <KeyRound size={19} className="cleanDrawerIcon" />
-                <span className="cleanDrawerLabel">Code Checker</span>
+                <Users size={19} className="cleanDrawerIcon" />
+                <span className="cleanDrawerLabel">Refer a Friend ($0.50 Bonus)</span>
               </Link>
 
               {/* 4. Cashback */}
@@ -254,17 +278,7 @@ export default function Header() {
                 <span className="cleanDrawerLabel">Cashback</span>
               </Link>
 
-              {/* 5. Leaderboard */}
-              <Link 
-                href="/leaderboard" 
-                className={`cleanDrawerItem ${pathname === '/leaderboard' ? 'active' : ''}`} 
-                onClick={() => setMobileNavOpen(false)}
-              >
-                <Award size={19} className="cleanDrawerIcon" />
-                <span className="cleanDrawerLabel">Leaderboard</span>
-              </Link>
-
-              {/* 6. Tournaments */}
+              {/* 5. Tournaments */}
               <Link 
                 href="/tournaments" 
                 className={`cleanDrawerItem ${pathname === '/tournaments' ? 'active' : ''}`} 
@@ -274,17 +288,37 @@ export default function Header() {
                 <span className="cleanDrawerLabel">Tournaments (Tartamada)</span>
               </Link>
 
-              {/* 7. Shuruudaha */}
+              {/* 6. Leaderboard */}
               <Link 
-                href="/terms" 
-                className={`cleanDrawerItem ${pathname === '/terms' ? 'active' : ''}`} 
+                href="/leaderboard" 
+                className={`cleanDrawerItem ${pathname === '/leaderboard' ? 'active' : ''}`} 
                 onClick={() => setMobileNavOpen(false)}
               >
-                <Info size={19} className="cleanDrawerIcon" />
-                <span className="cleanDrawerLabel">Shuruudaha</span>
+                <Award size={19} className="cleanDrawerIcon" />
+                <span className="cleanDrawerLabel">Leaderboard</span>
               </Link>
 
-              {/* 8. FAQ */}
+              {/* 7. Server Status */}
+              <Link 
+                href="/status" 
+                className={`cleanDrawerItem ${pathname === '/status' ? 'active' : ''}`} 
+                onClick={() => setMobileNavOpen(false)}
+              >
+                <Activity size={19} className="cleanDrawerIcon" />
+                <span className="cleanDrawerLabel">Live Server Status</span>
+              </Link>
+
+              {/* 8. Code Checker */}
+              <Link 
+                href="/redeem" 
+                className={`cleanDrawerItem ${pathname === '/redeem' ? 'active' : ''}`} 
+                onClick={() => setMobileNavOpen(false)}
+              >
+                <KeyRound size={19} className="cleanDrawerIcon" />
+                <span className="cleanDrawerLabel">Code Checker</span>
+              </Link>
+
+              {/* 9. FAQ */}
               <Link 
                 href="/faq" 
                 className={`cleanDrawerItem ${pathname === '/faq' ? 'active' : ''}`} 
@@ -311,8 +345,10 @@ export default function Header() {
         </>
       )}
 
-      {/* Quick Search Modal Component */}
+      {/* Modals */}
       <QuickSearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
+      <CurrencyConverterModal isOpen={currencyOpen} onClose={() => setCurrencyOpen(false)} />
+      <DailyGamingQuizModal isOpen={quizOpen} onClose={() => setQuizOpen(false)} />
     </header>
   );
 }
