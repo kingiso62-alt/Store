@@ -94,9 +94,9 @@ export default function Header() {
               type="button"
               onClick={() => setRewardsOpen(true)}
               style={{
-                background: 'linear-gradient(135deg, rgba(234,179,8,0.2) 0%, rgba(245,158,11,0.2) 100%)',
-                border: '1px solid #eab308',
-                color: '#fef08a',
+                background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+                border: '1px solid #facc15',
+                color: '#ffffff',
                 borderRadius: '6px',
                 padding: '3px 10px',
                 cursor: 'pointer',
@@ -104,10 +104,11 @@ export default function Header() {
                 fontWeight: 900,
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '5px'
+                gap: '5px',
+                boxShadow: '0 2px 8px rgba(245,158,11,0.3)'
               }}
             >
-              <Gift size={13} color="#facc15" />
+              <Gift size={13} color="#ffffff" />
               <span>Rewards Hub 🎁</span>
             </button>
 
@@ -184,20 +185,20 @@ export default function Header() {
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '6px',
+                gap: '8px',
                 cursor: 'pointer',
-                background: 'rgba(255,255,255,0.08)',
-                border: '1px solid rgba(255,255,255,0.18)',
+                background: '#f8fafc',
+                border: '1.5px solid #e2e8f0',
                 borderRadius: '10px',
                 padding: '6px 14px',
-                color: '#ffffff',
+                color: '#0f172a',
                 fontSize: '11.5px',
                 fontWeight: 800,
                 width: 'auto',
                 height: '34px'
               }}
             >
-              <Search size={14} color="#93c5fd" />
+              <Search size={14} color="#d91f2d" />
               <span className="hideOnMobile">Search (Ctrl+K)</span>
             </button>
 
