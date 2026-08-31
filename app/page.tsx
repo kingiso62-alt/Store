@@ -169,9 +169,10 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="wrap homePage" style={{ paddingTop: '18px' }}>
-        {/* 1. ANIMATED ESPORTS TOP-UP HERO BANNER */}
-        <section className="topupEsportsHero">
+      
+      {/* 1. ANIMATED ESPORTS TOP-UP HERO BANNER (100% FULL-WIDTH EDGE-TO-EDGE) */}
+      <section className="topupEsportsHero fullWidthHero">
+        <div className="wrap heroInnerContainer">
           <div className="heroMeshGlow"></div>
           <div className="topupHeroContent">
             <div className="heroTag">
@@ -256,7 +257,11 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
+
+      {/* 2. MAIN BODY CONTENT */}
+      <main className="wrap homePage">
 
         {/* 2. POPULAR GAMES SECTION HEADER WITH CATEGORY FILTER PILLS */}
         <div className="gameSectionHeaderRow" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '14px' }}>
