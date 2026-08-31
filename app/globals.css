@@ -581,19 +581,18 @@
 .productCard:hover .productImg img{transform:scale(1.06)}
 
 /* -------------------------------------------------------------
-   ANIMATED ESPORTS TOP-UP HERO & SHOWCASE (100% FULL WIDTH)
+   GAMING BANNER — CONTAINED WITH ROUNDED CORNERS
 -------------------------------------------------------------- */
 .topupEsportsHero {
   position: relative;
   width: 100%;
-  background: linear-gradient(100deg, rgba(5, 12, 32, 0.97) 0%, rgba(9, 26, 58, 0.92) 50%, rgba(12, 5, 22, 0.85) 100%), url('/images/topup-banner-bg.jpg') center/cover no-repeat;
-  border-radius: 0;
-  min-height: 320px;
+  background: linear-gradient(110deg, #050c20 0%, #091a3a 45%, #0a0416 100%), url('/images/topup-banner-bg.jpg') center/cover no-repeat;
+  border-radius: 20px;
+  min-height: 280px;
   padding: 0;
   overflow: hidden;
   margin-bottom: 32px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  border-bottom: 2px solid rgba(217, 31, 45, 0.2);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(217, 31, 45, 0.18);
   display: flex;
   align-items: center;
 }
@@ -604,8 +603,8 @@
   gap: 32px;
   position: relative;
   width: 100%;
-  min-height: 320px;
-  padding: 32px 0;
+  min-height: 280px;
+  padding: 28px 0;
 }
 .heroMeshGlow {
   position: absolute;
@@ -694,7 +693,7 @@
 /* FLOATING ANIMATED GAME SHOWCASE */
 .topupHeroShowcase {
   position: relative;
-  height: 290px;
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3101,10 +3100,10 @@
 
   /* Compact Sleek Mobile Hero Banner */
   .topupEsportsHero {
-    padding: 28px 0 24px;
-    border-radius: 0;
+    padding: 24px 0 20px;
+    border-radius: 14px;
     margin-top: 0;
-    margin-bottom: 22px;
+    margin-bottom: 18px;
     min-height: auto;
     text-align: center;
   }
