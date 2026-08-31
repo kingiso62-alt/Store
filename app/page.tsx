@@ -309,10 +309,6 @@ export default function Home() {
             <Link href={g.href} key={g.name} className="biriqGameCard">
               <div className="biriqMediaWrap">
                 <img src={g.img} alt={g.name} className="biriqGameImg" />
-                <div className={`biriqFloatingPill ${g.badge === 'INSTANT' ? 'pillInstant' : g.badge === 'MANUAL' ? 'pillManual' : 'pillSpecial'}`}>
-                  <Zap size={10} className="biriqZap" />
-                  <span>{g.badge}</span>
-                </div>
               </div>
               <div className="biriqCardInfo">
                 <h3 className="biriqGameTitle">{g.name}</h3>
