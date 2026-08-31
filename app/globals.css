@@ -586,40 +586,42 @@
 .topupEsportsHero {
   position: relative;
   width: 100%;
-  background: linear-gradient(90deg, rgba(6, 20, 44, 0.96) 0%, rgba(10, 32, 68, 0.88) 48%, rgba(15, 8, 26, 0.76) 100%), url('/images/topup-banner-bg.jpg') center/cover no-repeat;
+  background: linear-gradient(100deg, rgba(5, 12, 32, 0.97) 0%, rgba(9, 26, 58, 0.92) 50%, rgba(12, 5, 22, 0.85) 100%), url('/images/topup-banner-bg.jpg') center/cover no-repeat;
   border-radius: 0;
-  min-height: 350px;
-  padding: 36px 0 32px;
+  min-height: 480px;
+  padding: 0;
   overflow: hidden;
-  margin-bottom: 28px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
-  border-bottom: 1.5px solid #e2e8f0;
+  margin-bottom: 36px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.18);
+  border-bottom: 2px solid rgba(217, 31, 45, 0.25);
   display: flex;
   align-items: center;
 }
 .heroInnerContainer {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 28px;
+  gap: 40px;
   position: relative;
   width: 100%;
+  min-height: 480px;
+  padding: 48px 0;
 }
 .heroMeshGlow {
   position: absolute;
-  top: -80px;
-  right: -80px;
-  width: 380px;
-  height: 380px;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(217, 31, 45, 0.35) 0%, rgba(10, 44, 97, 0) 70%);
-  filter: blur(40px);
+  background: radial-gradient(circle, rgba(217, 31, 45, 0.4) 0%, rgba(10, 44, 97, 0) 65%);
+  filter: blur(60px);
   pointer-events: none;
-  animation: pulseGlow 6s ease-in-out infinite alternate;
+  animation: pulseGlow 7s ease-in-out infinite alternate;
 }
 @keyframes pulseGlow {
-  0% { transform: scale(0.9) translate(0, 0); opacity: 0.7; }
-  100% { transform: scale(1.15) translate(-20px, 20px); opacity: 1; }
+  0% { transform: scale(0.85) translate(0, 0); opacity: 0.6; }
+  100% { transform: scale(1.2) translate(-30px, 25px); opacity: 1; }
 }
 
 .topupHeroContent {
@@ -629,27 +631,27 @@
 .heroTag {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  background: rgba(255, 223, 64, 0.12);
-  border: 1px solid rgba(255, 223, 64, 0.3);
+  gap: 8px;
+  background: rgba(255, 223, 64, 0.14);
+  border: 1px solid rgba(255, 223, 64, 0.4);
   color: #ffdf40;
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 11px;
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 11.5px;
   font-weight: 800;
-  letter-spacing: 1px;
-  margin-bottom: 16px;
+  letter-spacing: 1.5px;
+  margin-bottom: 22px;
 }
 .zapGlow {
   filter: drop-shadow(0 0 6px #ffdf40);
 }
 .topupHeroContent h1 {
-  font-size: 38px;
+  font-size: 52px;
   font-weight: 900;
-  line-height: 1.1;
+  line-height: 1.05;
   color: #ffffff;
-  margin: 0 0 14px;
-  letter-spacing: -0.5px;
+  margin: 0 0 18px;
+  letter-spacing: -1px;
 }
 .textGradient {
   background: linear-gradient(90deg, #ff416c 0%, #ff4b2b 40%, #ffdf40 100%);
@@ -657,29 +659,33 @@
   -webkit-text-fill-color: transparent;
 }
 .topupHeroContent p {
-  color: #b8cde8;
-  font-size: 14px;
-  line-height: 1.6;
-  max-width: 480px;
-  margin: 0 0 24px;
+  color: #94b8d8;
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 500px;
+  margin: 0 0 30px;
 }
 .heroBadgesRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
 }
 .heroBadgeItem {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #e2eefb;
-  font-size: 12px;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #dce9fb;
+  font-size: 12.5px;
   font-weight: 700;
-  padding: 7px 13px;
-  border-radius: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background .2s ease;
+}
+.heroBadgeItem:hover {
+  background: rgba(255, 255, 255, 0.14);
 }
 .heroBadgeItem svg {
   color: #38ef7d;
@@ -688,7 +694,7 @@
 /* FLOATING ANIMATED GAME SHOWCASE */
 .topupHeroShowcase {
   position: relative;
-  height: 280px;
+  height: 420px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -729,54 +735,54 @@
 
 /* Animated Cards Positioning & Floating Loops */
 .floatCard.card1 {
-  width: 76px;
-  height: 76px;
-  left: 22%;
+  width: 110px;
+  height: 110px;
+  left: 18%;
   top: 5%;
   z-index: 4;
   animation: floatAnim1 5s ease-in-out infinite alternate;
 }
 .floatCard.card2 {
-  width: 76px;
-  height: 76px;
-  right: 18%;
-  top: 8%;
+  width: 100px;
+  height: 100px;
+  right: 16%;
+  top: 6%;
   z-index: 3;
   animation: floatAnim2 6s ease-in-out infinite alternate;
 }
 .floatCard.card3 {
-  width: 80px;
-  height: 80px;
-  left: 38%;
+  width: 120px;
+  height: 120px;
+  left: 36%;
   bottom: 6%;
   z-index: 5;
-  border-color: rgba(255, 223, 64, 0.6);
-  box-shadow: 0 12px 28px rgba(217, 31, 45, 0.3);
+  border-color: rgba(255, 223, 64, 0.7);
+  box-shadow: 0 20px 50px rgba(217, 31, 45, 0.4);
   animation: floatAnim3 5.5s ease-in-out infinite alternate;
 }
 .floatCard.card4 {
-  width: 64px;
-  height: 64px;
-  left: 8%;
-  bottom: 10%;
+  width: 88px;
+  height: 88px;
+  left: 6%;
+  bottom: 8%;
   z-index: 2;
   opacity: 0.95;
   animation: floatAnim2 7s ease-in-out infinite alternate;
 }
 .floatCard.card6 {
-  width: 68px;
-  height: 68px;
+  width: 96px;
+  height: 96px;
   left: 2%;
-  top: 6%;
+  top: 5%;
   z-index: 3;
   opacity: 0.95;
   animation: floatAnim2 7.5s ease-in-out infinite alternate;
 }
 .floatCard.card7 {
-  width: 70px;
-  height: 70px;
-  right: 4%;
-  top: 6%;
+  width: 98px;
+  height: 98px;
+  right: 2%;
+  top: 5%;
   z-index: 3;
   opacity: 0.95;
   animation: floatAnim1 8s ease-in-out infinite alternate;
@@ -4127,32 +4133,32 @@ html.dark-theme textarea {
 }
 
 /* -------------------------------------------------------------
-   POPULAR GAMES FULL-WIDTH SQUIRCLE GRID
+   POPULAR GAMES — PREMIUM GAME CARD GRID
 -------------------------------------------------------------- */
 .biriqGridStyle {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
   width: 100%;
-  margin-top: 14px;
-  margin-bottom: 32px;
+  margin-top: 16px;
+  margin-bottom: 36px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
   .biriqGridStyle {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+}
+
+@media (max-width: 680px) {
+  .biriqGridStyle {
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 }
 
-@media (max-width: 768px) {
-  .biriqGridStyle {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-  }
-}
-
-@media (max-width: 480px) {
+@media (max-width: 380px) {
   .biriqGridStyle {
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
@@ -4160,61 +4166,62 @@ html.dark-theme textarea {
 }
 
 .biriqGameCard {
-  background: #ffffff;
-  border: 1.5px solid #edf2f7;
-  border-radius: 16px;
-  padding: 8px;
+  background: #0d1b33;
+  border: 1.5px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   text-decoration: none;
-  transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all .28s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
   position: relative;
   overflow: hidden;
 }
 
 .biriqGameCard:hover {
-  transform: translateY(-3px);
+  transform: translateY(-6px) scale(1.02);
   border-color: #d91f2d;
-  box-shadow: 0 8px 20px rgba(217, 31, 45, 0.1);
+  box-shadow: 0 16px 36px rgba(217, 31, 45, 0.22), 0 0 0 1px rgba(217, 31, 45, 0.3);
 }
 
 .biriqMediaWrap {
   width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 12px;
+  aspect-ratio: 3 / 4;
+  border-radius: 20px;
   overflow: hidden;
   position: relative;
-  background: #0f172a;
+  background: #0a1428;
 }
 
 .biriqGameImg {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform .3s ease;
+  transition: transform .4s ease;
 }
 
 .biriqGameCard:hover .biriqGameImg {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .biriqFloatingPill {
   position: absolute;
-  bottom: 6px;
-  left: 6px;
-  background: rgba(15, 23, 42, 0.78);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-  font-size: 8.5px;
-  font-weight: 800;
-  padding: 2px 6px;
-  border-radius: 10px;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 223, 64, 0.4);
+  color: #ffdf40;
+  font-size: 9px;
+  font-weight: 900;
+  padding: 3px 8px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   gap: 3px;
+  letter-spacing: 0.5px;
 }
 
 .biriqZap {
@@ -4222,23 +4229,29 @@ html.dark-theme textarea {
 }
 
 .biriqGameTitle {
-  font-size: 11.5px;
-  font-weight: 700;
-  color: #0f172a;
-  margin: 6px 0 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px 12px 14px;
+  background: linear-gradient(0deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
+  font-size: 13px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
   text-align: center;
   line-height: 1.3;
-  transition: color .2s ease;
+  letter-spacing: 0.2px;
+  transition: all .2s ease;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  max-width: 100%;
 }
 
 .biriqGameCard:hover .biriqGameTitle {
-  color: #d91f2d;
+  color: #ffdf40;
 }
 
 
