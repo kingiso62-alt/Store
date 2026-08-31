@@ -170,95 +170,97 @@ export default function Home() {
     <>
       <Header />
       
-      {/* 1. ANIMATED ESPORTS TOP-UP HERO BANNER (100% FULL-WIDTH EDGE-TO-EDGE) */}
-      <section className="topupEsportsHero fullWidthHero">
-        <div className="wrap heroInnerContainer">
-          <div className="heroMeshGlow"></div>
-          <div className="topupHeroContent">
-            <div className="heroTag">
-              <Zap size={14} className="zapGlow" />
-              <span>24/7 INSTANT TOP-UP • OFFICIAL SERVERS</span>
+      {/* 1. ANIMATED ESPORTS TOP-UP HERO BANNER — CONTAINED GAMING CARD */}
+      <div className="wrap">
+        <section className="topupEsportsHero">
+          <div className="heroInnerContainer">
+            <div className="heroMeshGlow"></div>
+            <div className="topupHeroContent">
+              <div className="heroTag">
+                <Zap size={14} className="zapGlow" />
+                <span>24/7 INSTANT TOP-UP • OFFICIAL SERVERS</span>
+              </div>
+              <h1>
+                TOP-UP YOUR<br />
+                <span className="textGradient">FAVORITE GAMES</span>
+              </h1>
+              <p>
+                Get game credits, diamonds, UC, and passes delivered directly to your Player ID in seconds with guaranteed safety.
+              </p>
+              
+              <div className="heroBadgesRow">
+                <div className="heroBadgeItem">
+                  <ShieldCheck size={16} />
+                  <span>100% Authorized</span>
+                </div>
+                <div className="heroBadgeItem">
+                  <Zap size={16} />
+                  <span>Instant Delivery</span>
+                </div>
+                <div className="heroBadgeItem">
+                  <Sparkles size={16} />
+                  <span>Zero Hidden Fees</span>
+                </div>
+              </div>
             </div>
-            <h1>
-              TOP-UP YOUR<br />
-              <span className="textGradient">FAVORITE GAMES</span>
-            </h1>
-            <p>
-              Get game credits, diamonds, UC, and passes delivered directly to your Player ID in seconds with guaranteed safety.
-            </p>
-            
-            <div className="heroBadgesRow">
-              <div className="heroBadgeItem">
-                <ShieldCheck size={16} />
-                <span>100% Authorized</span>
-              </div>
-              <div className="heroBadgeItem">
-                <Zap size={16} />
-                <span>Instant Delivery</span>
-              </div>
-              <div className="heroBadgeItem">
-                <Sparkles size={16} />
-                <span>Zero Hidden Fees</span>
-              </div>
-            </div>
-          </div>
 
-          {/* Dynamic Floating Animated Pure Digital Gaming Showcase */}
-          <div className="topupHeroShowcase">
-            <div className="floatingGameStack">
-              {/* Digital Gaming Passes & Currencies */}
-              <div className="floatCard card1" title="PUBG Mobile UC">
-                <img src="/images/games/pubg-uc-chest.jpg" alt="PUBG UC Chest" />
-                <span className="cardLabel">PUBG UC</span>
-              </div>
-              <div className="floatCard card2" title="Free Fire Diamonds">
-                <img src="/images/games/free-fire.png" alt="Free Fire Diamonds" />
-                <span className="cardLabel">Diamonds</span>
-              </div>
-              <div className="floatCard card3" title="eFootball Android">
-                <img src="/images/games/efootball-android.png" alt="eFootball Coins" />
-                <span className="cardLabel">eFootball</span>
-              </div>
-              <div className="floatCard card4" title="eFootball iOS">
-                <img src="/images/games/efootball-ios.png" alt="eFootball iOS" />
-                <span className="cardLabel">eFootball iOS</span>
-              </div>
-              <div className="floatCard card5" title="PUBG Royale Pass">
-                <img src="/images/games/pubg-royale-pass.jpg" alt="Royale Pass" />
-                <span className="cardLabel">Royale Pass</span>
-              </div>
-              <div className="floatCard card6" title="Official Supercars">
-                <img src="/images/games/pubg-cars-official.png" alt="Ferrari Supercars" />
-                <span className="cardLabel">Supercars</span>
-              </div>
-              <div className="floatCard card7" title="Mythic 7-Star X-Suits">
-                <img src="/images/games/pubg-xsuits-official.png" alt="X-Suits" />
-                <span className="cardLabel">X-Suits</span>
-              </div>
-              <div className="floatCard card8" title="Popularity Battle">
-                <img src="/images/games/pubg-popularity-official.png" alt="Popularity" />
-                <span className="cardLabel">Popularity</span>
-              </div>
-              <div className="floatCard card9" title="Roblox Robux">
-                <img src="/images/games/roblox.png" alt="Roblox" />
-                <span className="cardLabel">Roblox</span>
-              </div>
-              <div className="floatCard card10" title="Blood Strike Mena">
-                <img src="/images/games/blood-strike.png" alt="Blood Strike" />
-                <span className="cardLabel">Blood Strike</span>
-              </div>
-              <div className="floatCard card11" title="Mobile Legends Diamonds">
-                <img src="/images/games/mobile-legends.png" alt="Mobile Legends" />
-                <span className="cardLabel">MLBB</span>
-              </div>
-              <div className="floatCard card12" title="COD Mobile Points">
-                <img src="/images/games/cod-mobile.png" alt="COD Points" />
-                <span className="cardLabel">COD Points</span>
+            {/* Dynamic Floating Animated Pure Digital Gaming Showcase */}
+            <div className="topupHeroShowcase">
+              <div className="floatingGameStack">
+                {/* Digital Gaming Passes & Currencies */}
+                <div className="floatCard card1" title="PUBG Mobile UC">
+                  <img src="/images/games/pubg-uc-chest.jpg" alt="PUBG UC Chest" />
+                  <span className="cardLabel">PUBG UC</span>
+                </div>
+                <div className="floatCard card2" title="Free Fire Diamonds">
+                  <img src="/images/games/free-fire.png" alt="Free Fire Diamonds" />
+                  <span className="cardLabel">Diamonds</span>
+                </div>
+                <div className="floatCard card3" title="eFootball Android">
+                  <img src="/images/games/efootball-android.png" alt="eFootball Coins" />
+                  <span className="cardLabel">eFootball</span>
+                </div>
+                <div className="floatCard card4" title="eFootball iOS">
+                  <img src="/images/games/efootball-ios.png" alt="eFootball iOS" />
+                  <span className="cardLabel">eFootball iOS</span>
+                </div>
+                <div className="floatCard card5" title="PUBG Royale Pass">
+                  <img src="/images/games/pubg-royale-pass.jpg" alt="Royale Pass" />
+                  <span className="cardLabel">Royale Pass</span>
+                </div>
+                <div className="floatCard card6" title="Official Supercars">
+                  <img src="/images/games/pubg-cars-official.png" alt="Ferrari Supercars" />
+                  <span className="cardLabel">Supercars</span>
+                </div>
+                <div className="floatCard card7" title="Mythic 7-Star X-Suits">
+                  <img src="/images/games/pubg-xsuits-official.png" alt="X-Suits" />
+                  <span className="cardLabel">X-Suits</span>
+                </div>
+                <div className="floatCard card8" title="Popularity Battle">
+                  <img src="/images/games/pubg-popularity-official.png" alt="Popularity" />
+                  <span className="cardLabel">Popularity</span>
+                </div>
+                <div className="floatCard card9" title="Roblox Robux">
+                  <img src="/images/games/roblox.png" alt="Roblox" />
+                  <span className="cardLabel">Roblox</span>
+                </div>
+                <div className="floatCard card10" title="Blood Strike Mena">
+                  <img src="/images/games/blood-strike.png" alt="Blood Strike" />
+                  <span className="cardLabel">Blood Strike</span>
+                </div>
+                <div className="floatCard card11" title="Mobile Legends Diamonds">
+                  <img src="/images/games/mobile-legends.png" alt="Mobile Legends" />
+                  <span className="cardLabel">MLBB</span>
+                </div>
+                <div className="floatCard card12" title="COD Mobile Points">
+                  <img src="/images/games/cod-mobile.png" alt="COD Points" />
+                  <span className="cardLabel">COD Points</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* 2. MAIN BODY CONTENT */}
       <main className="wrap homePage">

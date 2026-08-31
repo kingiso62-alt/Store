@@ -165,10 +165,11 @@ export default function Topup() {
     <>
       <Header />
       
-      {/* 1. ANIMATED ESPORTS TOP-UP HERO BANNER (FULL WIDTH) */}
-      <section className="topupEsportsHero fullWidthHero">
-        <div className="wrap heroInnerContainer">
-          <div className="heroMeshGlow"></div>
+      {/* 1. ANIMATED ESPORTS TOP-UP HERO BANNER — CONTAINED GAMING CARD */}
+      <div className="wrap">
+        <section className="topupEsportsHero">
+          <div className="heroInnerContainer">
+            <div className="heroMeshGlow"></div>
           <div className="topupHeroContent">
             <div className="heroTag">
               <Zap size={14} className="zapGlow" />
@@ -263,7 +264,8 @@ export default function Topup() {
             </div>
           </div>
         </div>
-      </section>
+        </section>
+      </div>
 
       <main className="wrap topupPage">
 
