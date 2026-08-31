@@ -277,18 +277,21 @@ export default function Topup() {
           </div>
         </div>
 
-        {/* 3. ORDERED 12 ESPORTS GAME CARDS GRID (BIRIQ STYLE SQUIRCLE) */}
+        {/* 3. ORDERED 12 ESPORTS GAME CARDS GRID */}
         <section className="esportsGameGrid biriqGridStyle">
           {games.map((g) => (
             <Link href={g.href} key={g.name} className="biriqGameCard">
               <div className="biriqMediaWrap">
                 <img src={g.img} alt={g.name} className="biriqGameImg" />
-                <div className="biriqFloatingPill">
-                  <Zap size={11} className="biriqZap" />
+                <div className={`biriqFloatingPill ${g.badge === 'INSTANT' ? 'pillInstant' : g.badge === 'MANUAL' ? 'pillManual' : 'pillSpecial'}`}>
+                  <Zap size={10} className="biriqZap" />
                   <span>{g.badge}</span>
                 </div>
               </div>
-              <h3 className="biriqGameTitle">{g.name}</h3>
+              <div className="biriqCardInfo">
+                <h3 className="biriqGameTitle">{g.name}</h3>
+                <span className="biriqGameSub">{g.currency}</span>
+              </div>
             </Link>
           ))}
         </section>

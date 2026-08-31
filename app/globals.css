@@ -3865,86 +3865,7 @@
   }
 }
 
-/* -------------------------------------------------------------
-   POPULAR GAMES 3-BY-3 GRID (BIRIQ SQUIRCLE CARD STYLE)
--------------------------------------------------------------- */
-.biriqGridStyle {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 16px 12px;
-  margin-bottom: 28px;
-}
-.biriqGameCard {
-  background: #ffffff;
-  border: 1.5px solid #edf2f7;
-  border-radius: 18px;
-  padding: 8px 8px 12px 8px;
-  box-shadow: 0 4px 16px rgba(10, 44, 97, 0.04);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  transition: all .2s ease;
-  position: relative;
-}
-.biriqGameCard:hover {
-  transform: translateY(-4px);
-  border-color: #0a2c61;
-  box-shadow: 0 10px 24px rgba(10, 44, 97, 0.12);
-}
-.biriqMediaWrap {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 14px;
-  overflow: hidden;
-  position: relative;
-  background: #09152b;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-.biriqGameImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform .25s ease;
-}
-.biriqGameCard:hover .biriqGameImg {
-  transform: scale(1.06);
-}
-.biriqFloatingPill {
-  position: absolute;
-  bottom: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #ffffff;
-  color: #0a2c61;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 20px;
-  padding: 2.5px 8px;
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: .4px;
-  text-transform: uppercase;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  white-space: nowrap;
-  z-index: 2;
-}
-.biriqZap {
-  color: #0a2c61;
-  flex-shrink: 0;
-}
-.biriqGameTitle {
-  font-size: 12px;
-  font-weight: 900;
-  color: #0a2c61;
-  text-align: center;
-  margin: 8px 0 0 0;
-  line-height: 1.25;
-  letter-spacing: -0.1px;
-}
+
 
 /* -------------------------------------------------------------
    RESPONSIVE 3-COLUMN TOP-UP PACKAGE GRID (DESKTOP & MOBILE)
@@ -4210,7 +4131,7 @@ html.dark-theme textarea {
 }
 
 /* -------------------------------------------------------------
-   POPULAR GAMES — ORIGINAL COMPACT GAME CARD GRID
+   POPULAR GAMES — LUXURY ESPORTS SQUIRCLE GAME CARD GRID
 -------------------------------------------------------------- */
 .biriqGridStyle {
   display: grid;
@@ -4251,23 +4172,23 @@ html.dark-theme textarea {
 
 .biriqGameCard {
   background: #ffffff;
-  border: 1.5px solid #e8edf4;
-  border-radius: 14px;
-  padding: 0;
+  border: 1.5px solid #edf2f7;
+  border-radius: 16px;
+  padding: 8px 8px 10px;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
   text-decoration: none;
-  transition: all .22s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, border-color 0.22s ease;
+  box-shadow: 0 2px 8px rgba(10, 44, 97, 0.04);
   position: relative;
   overflow: hidden;
 }
 
 .biriqGameCard:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
   border-color: #d91f2d;
-  box-shadow: 0 10px 26px rgba(217, 31, 45, 0.14);
+  box-shadow: 0 12px 28px rgba(217, 31, 45, 0.12), 0 4px 12px rgba(10, 44, 97, 0.06);
 }
 
 .biriqMediaWrap {
@@ -4276,14 +4197,16 @@ html.dark-theme textarea {
   border-radius: 12px;
   overflow: hidden;
   position: relative;
-  background: #0d1520;
+  background: #09152b;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .biriqGameImg {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform .35s ease;
+  display: block;
+  transition: transform 0.35s ease;
 }
 
 .biriqGameCard:hover .biriqGameImg {
@@ -4294,44 +4217,93 @@ html.dark-theme textarea {
   position: absolute;
   top: 6px;
   left: 6px;
-  background: rgba(5, 15, 35, 0.78);
+  background: rgba(5, 15, 35, 0.82);
   backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 223, 64, 0.35);
-  color: #ffdf40;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
   font-size: 8.5px;
   font-weight: 900;
   padding: 2px 7px;
-  border-radius: 10px;
-  display: flex;
+  border-radius: 12px;
+  display: inline-flex;
   align-items: center;
   gap: 3px;
   letter-spacing: 0.4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.biriqFloatingPill.pillInstant {
+  background: rgba(16, 185, 129, 0.92);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+}
+
+.biriqFloatingPill.pillManual {
+  background: rgba(14, 116, 144, 0.92);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+}
+
+.biriqFloatingPill.pillSpecial {
+  background: rgba(217, 119, 6, 0.92);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
 }
 
 .biriqZap {
   color: #ffdf40;
+  flex-shrink: 0;
+}
+
+.biriqCardInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 7px;
 }
 
 .biriqGameTitle {
   font-size: 12px;
   font-weight: 800;
-  color: #0f172a;
+  color: #0a2148;
   margin: 0;
-  padding: 7px 8px 9px;
-  text-align: center;
-  line-height: 1.3;
-  transition: color .18s ease;
+  line-height: 1.25;
+  transition: color 0.18s ease;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  background: #ffffff;
+  max-width: 100%;
 }
 
 .biriqGameCard:hover .biriqGameTitle {
   color: #d91f2d;
 }
+
+.biriqGameSub {
+  font-size: 10px;
+  font-weight: 600;
+  color: #72849a;
+  margin: 2px 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+html.dark-theme .biriqGameCard {
+  background: #0d1b33 !important;
+  border-color: #1e3a8a !important;
+}
+html.dark-theme .biriqGameTitle {
+  color: #ffffff !important;
+}
+html.dark-theme .biriqGameSub {
+  color: #94a3b8 !important;
+}
+
 
 
 
